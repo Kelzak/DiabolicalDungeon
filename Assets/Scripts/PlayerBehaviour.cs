@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     public float moveSpeed;
+    private float playerLives = 3;
+    private vector3 respawnPosition;
 
     private Rigidbody rb;
     private Camera cam;
@@ -14,6 +16,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
+        respawnPosition = transform.position
     }
 
     // Update is called once per frame
@@ -35,5 +38,22 @@ public class PlayerBehaviour : MonoBehaviour
         var moveDirection = forward * yValue + right * xValue;
 
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+    }
+
+    void respawn()
+    {
+      if(playerLives <= 0)
+      {
+        transform.position = respawnPosition;
+        playerLives = 3;
+    }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+      if (other.tag == ("LavaPit"))
+        {
+          playerLives -= 1;
+        }
     }
 }
