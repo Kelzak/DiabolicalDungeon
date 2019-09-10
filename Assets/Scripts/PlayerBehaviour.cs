@@ -19,8 +19,8 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var xValue = Input.GetAxisRaw("Vertical");
-        var yValue = Input.GetAxisRaw("Horizontal");
+        var yValue = Input.GetAxisRaw("Vertical");
+        var xValue = Input.GetAxisRaw("Horizontal");
 
         var cam = Camera.main;
 
