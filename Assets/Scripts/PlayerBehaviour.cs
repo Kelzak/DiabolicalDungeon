@@ -36,4 +36,9 @@ public class PlayerBehaviour : MonoBehaviour
 
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
+
+    void Teleport(Transform target)
+    {
+        
+    }
 }
