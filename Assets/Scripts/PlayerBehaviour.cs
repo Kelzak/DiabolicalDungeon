@@ -22,6 +22,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Movement
         var yValue = Input.GetAxis("Vertical");
         var xValue = Input.GetAxis("Horizontal");
 
@@ -38,6 +39,25 @@ public class PlayerBehaviour : MonoBehaviour
         var moveDirection = forward * yValue + right * xValue;
 
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+
+        //Clicking to Select Teleport Target
+        if(Input.GetMouseButtonDown(0))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit, 100) && hit.collider.tag == "Enemy")
+            {
+                SwapTeleport(hit.transform);
+            }
+        }
+    }
+
+    void SwapTeleport(Transform target)
+    {
+        Vector3 tempStorage = transform.position;
+        transform.position = target.position;
+        target.position = tempStorage;
     }
 
     void respawn()
