@@ -787,7 +787,6 @@ PrefabInstance:
       objectReference: {fileID: 1593354538}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6e2281c0a5c4e3d96e0b079ac0e817, type: 3}
-<<<<<<< HEAD
 --- !u!1001 &519544073229195848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -931,8 +930,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c685ae42ef36a3d47ba5dd95a5a47972, type: 3}
-=======
->>>>>>> parent of d6f10d3... added goblin placeholder & material, resized player placeholder
 --- !u!1001 &2871965594990015097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1003,17 +1000,17 @@ PrefabInstance:
     - target: {fileID: 6148880737952999510, guid: 9176f4bb37d2ce3449a1f5ecd2b70be4,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 6148880737952999510, guid: 9176f4bb37d2ce3449a1f5ecd2b70be4,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 6148880737952999510, guid: 9176f4bb37d2ce3449a1f5ecd2b70be4,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9176f4bb37d2ce3449a1f5ecd2b70be4, type: 3}
