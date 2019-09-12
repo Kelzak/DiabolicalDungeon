@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -9,8 +10,12 @@ public class PlayerBehaviour : MonoBehaviour
     public float swapCooldown = 5f;
     public float playerLives = 3;
 
+    public Canvas cooldownCanvas;
+    public Slider cooldownSlider;
     private Vector3 respawnPosition;
     private GameObject swapTarget;
+    private bool canSwap = true;
+    private float currentSwapCooldown;
 
     private Rigidbody rb;
     private Camera cam;
@@ -21,11 +26,14 @@ public class PlayerBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         respawnPosition = transform.position;
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Movement
         var yValue = Input.GetAxis("Vertical");
         var xValue = Input.GetAxis("Horizontal");
 
@@ -33,9 +41,11 @@ public class PlayerBehaviour : MonoBehaviour
 
         var forward = cam.transform.forward;
         var right = cam.transform.right;
+        var up = cam.transform.up;
 
         forward.y = 0f;
         right.y = 0f;
+
         forward.Normalize();
         right.Normalize();
 
@@ -44,6 +54,10 @@ public class PlayerBehaviour : MonoBehaviour
         var moveDirection = forward * yValue + right * xValue;
 
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+
+        //Cooldown Canvas Rotation
+        cooldownCanvas.transform.LookAt(Camera.main.transform);
+        cooldownCanvas.transform.Rotate(0, 180f, 0);
 
         //Clicking to Select Teleport Target
         if (Input.GetMouseButtonDown(0))
@@ -69,7 +83,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         //Teleporting
-        if(Input.GetKeyDown(KeyCode.Q) && swapTarget != null)
+        if(Input.GetKeyDown(KeyCode.Q) && canSwap && swapTarget != null)
         {
             SwapTeleport(swapTarget.transform);
         }
@@ -81,6 +95,29 @@ public class PlayerBehaviour : MonoBehaviour
         Vector3 tempStorage = transform.position;
         transform.position = target.position;
         target.position = tempStorage;
+
+        if (!cooldownActive)
+        {
+            StartCoroutine(SwapTeleportCooldown());
+        }
+    }
+
+    private bool cooldownActive = false;
+    IEnumerator SwapTeleportCooldown()
+    {
+        cooldownActive = true;
+        canSwap = false;
+        currentSwapCooldown = 0;
+        cooldownSlider.gameObject.SetActive(true);
+        while (currentSwapCooldown < swapCooldown)
+        {
+            cooldownSlider.value = currentSwapCooldown;
+            currentSwapCooldown += Time.deltaTime;
+            yield return null;
+        }
+        cooldownSlider.gameObject.SetActive(false);
+        canSwap = true;
+        cooldownActive = false;
     }
 
     void Respawn()
@@ -89,7 +126,7 @@ public class PlayerBehaviour : MonoBehaviour
       {
         transform.position = respawnPosition;
         playerLives = 3;
-    }
+        }
     }
 
     void OnTriggerEnter(Collider other)
