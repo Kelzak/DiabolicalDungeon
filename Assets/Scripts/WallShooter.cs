@@ -14,22 +14,25 @@ public class WallShooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletDirection = (speedX, speedY, speedZ);
+        //bulletDirection = (speedX, speedY, speedZ);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(Physics.BoxCast(transform.position, new Vector3(10f, 10f, 10f), -1 *transform.up, Quaternion.identity, 100f, LayerMask.GetMask("Player")))
+        {
+            Debug.Log("hitting player");
+        }
     }
 
     void FixedUpdate()
     {
-      if (/* player is in the WallShooter area && */ Time.time >= timeCheck)
-        {
-        fire();
-        timeCheck = Time.time + shotDelay;
-        }
+      //if (/* player is in the WallShooter area && */ Time.time >= timeCheck)
+      //  {
+      //  fire();
+      //  timeCheck = Time.time + shotDelay;
+      //  }
     }
 
 
