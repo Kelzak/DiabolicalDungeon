@@ -14,7 +14,7 @@ public class WallShooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletDirection = (speedX, speedY, speedZ);
+      
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class WallShooter : MonoBehaviour
       void fire()
       {
           GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
-          newBullet.GetComponent<Rigidbody>().AddRelativeForce(bulletDirection);
+          newBullet.GetComponent<Rigidbody>().AddRelativeForce(speedX, speedY, speedZ);
           Destroy(newBullet, 4.0f);
       }
 }
