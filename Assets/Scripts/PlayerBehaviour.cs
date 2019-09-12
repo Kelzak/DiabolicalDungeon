@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     public float moveSpeed;
-    private float playerLives = 3;
+    public float swapRange = 8f;
+    public float swapCooldown = 5f;
+    public float playerLives = 3;
+
     private Vector3 respawnPosition;
     private GameObject swapTarget;
 
@@ -43,16 +46,34 @@ public class PlayerBehaviour : MonoBehaviour
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
 
         //Clicking to Select Teleport Target
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if(Physics.Raycast(ray, out hit, 100) && hit.collider.tag == "Enemy")
+            if (Physics.Raycast(ray, out hit, 100) && hit.collider.tag == "Enemy" && Vector3.Distance(hit.collider.transform.position, transform.position) < swapRange)
             {
-                SwapTeleport(hit.transform);
+                if (swapTarget != null)
+                {
+                    swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(false);
+                }
+                hit.collider.gameObject.GetComponent<EnemyBehaviour>().MakeTarget(true);
+                swapTarget = hit.collider.gameObject;
             }
         }
+        //Deselect if out of range
+        if(swapTarget != null && Vector3.Distance(swapTarget.transform.position, transform.position) > swapRange)
+        {
+            swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(false);
+            swapTarget = null;
+        }
+
+        //Teleporting
+        if(Input.GetKeyDown(KeyCode.Q) && swapTarget != null)
+        {
+            SwapTeleport(swapTarget.transform);
+        }
+
     }
 
     void SwapTeleport(Transform target)
@@ -75,6 +96,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
       if (other.tag == ("LavaPit"))
         {
+            Debug.Log("Lava has been hit");
           playerLives -= 1;
         }
     }
