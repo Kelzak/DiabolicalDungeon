@@ -21,7 +21,7 @@ public class WallShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Physics.BoxCast(transform.position, new Vector3(10f, 10f, 10f), -1 *transform.up, Quaternion.identity, 100f, LayerMask.GetMask("Player")))
+        if(Physics.BoxCast(transform.position, new Vector3(10f, 20f, 10f), -1 *transform.up, Quaternion.LookRotation(-1 * transform.up), 100f, LayerMask.GetMask("Player")))
         {
           playerIsInSideWallShotRange = true;
             Debug.Log("hitting player");
@@ -39,10 +39,12 @@ public class WallShooter : MonoBehaviour
         }
     }
 
+
+
       void fire()
       {
           GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
-          newBullet.GetComponent<Rigidbody>().AddRelativeForce(speedX, speedY, speedZ);
+          newBullet.GetComponent<Rigidbody>().AddRelativeForce(bulletDirection);
           Destroy(newBullet, 4.0f);
       }
 }
