@@ -20,7 +20,7 @@ public class WallShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Physics.BoxCast(transform.position, new Vector3(10f, 10f, 10f), -1 *transform.up, Quaternion.identity, 100f, LayerMask.GetMask("Player")))
+        if(Physics.BoxCast(transform.position, new Vector3(10f, 20f, 10f), -1 *transform.up, Quaternion.LookRotation(-1 * transform.up), 100f, LayerMask.GetMask("Player")))
         {
             Debug.Log("hitting player");
         }

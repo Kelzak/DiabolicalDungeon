@@ -74,13 +74,13 @@ public class PlayerBehaviour : MonoBehaviour
       if (other.tag == ("LavaPit"))
         {
           playerLives -= 1;
-          Debug.log("Lava damaged the player")
+            Debug.Log("Lava damaged the player");
         }
         if (other.tag == ("SideWallBullet"))
           {
             playerLives -= 1;
             Destroy(other.gameObject);
-            Debug.log("Bullet damaged the player")
+            Debug.Log("Bullet damaged the player");
 
           }
     }
