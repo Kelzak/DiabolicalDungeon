@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - LavaPit
   - Wall
+  - WallShooter
+  - WallShooterBullet
   layers:
   - Default
   - TransparentFX

@@ -26,8 +26,9 @@ public class WallShooter : MonoBehaviour
         {
           playerIsInSideWallShotRange = true;
             Debug.Log("hitting player");
-
-
+        }
+        else {
+          playerIsInSideWallShotRange = false;
         }
     }
 
@@ -40,12 +41,26 @@ public class WallShooter : MonoBehaviour
       //  }
     }
 
-
-
       void fire()
       {
           GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
           newBullet.GetComponent<Rigidbody>().AddRelativeForce(bulletDirection);
           Destroy(newBullet, 4.0f);
+      }
+      void OnTriggerEnter(Collider other)
+      {
+        if (other.tag == ("Player"))
+        {
+        playerIsInSideWallShotRange = true;
+          Debug.Log("Player is in shooting range");
+        }
+      }
+      void OnTriggerExit(Collider other)
+      {
+        if (other.tag == ("Player"))
+        {
+        playerIsInSideWallShotRange = false;
+          Debug.Log("Player has exited shooting range");
+        }
       }
 }
