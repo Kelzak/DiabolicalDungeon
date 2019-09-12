@@ -36,6 +36,8 @@ public class PlayerBehaviour : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
+        Respawn();
+
         var moveDirection = forward * yValue + right * xValue;
 
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
