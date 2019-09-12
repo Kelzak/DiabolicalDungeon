@@ -6,7 +6,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
     public float moveSpeed;
     private float playerLives = 3;
-    private vector3 respawnPosition;
+    private Vector3 respawnPosition;
 
     private Rigidbody rb;
     private Camera cam;
@@ -16,13 +16,12 @@ public class PlayerBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
-        respawnPosition = transform.position
+        respawnPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Movement
         var yValue = Input.GetAxis("Vertical");
         var xValue = Input.GetAxis("Horizontal");
 
