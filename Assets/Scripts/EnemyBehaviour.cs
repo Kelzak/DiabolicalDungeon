@@ -10,4 +10,9 @@ public class EnemyBehaviour : MonoBehaviour
     {
         halo = (Behaviour)GetComponent("Halo");
     }
+
+    public void MakeTarget(bool on)
+    {
+        halo.enabled = on;
+    }
 }
