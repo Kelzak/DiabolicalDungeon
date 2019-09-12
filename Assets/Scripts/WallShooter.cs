@@ -25,14 +25,14 @@ public class WallShooter : MonoBehaviour
 
     void FixedUpdate()
     {
-      
-    }
-
-    if (/* player is in the WallShooter area && */ Time.time >= timeCheck)
+      if (/* player is in the WallShooter area && */ Time.time >= timeCheck)
         {
         fire();
         timeCheck = Time.time + shotDelay;
-      }
+        }
+    }
+
+
 
       void fire()
       {
