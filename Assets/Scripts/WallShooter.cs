@@ -35,10 +35,12 @@ public class WallShooter : MonoBehaviour
       //  }
     }
 
+
+
       void fire()
       {
           GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
-          newBullet.GetComponent<Rigidbody>().AddRelativeForce(speedX, speedY, speedZ);
+          newBullet.GetComponent<Rigidbody>().AddRelativeForce(bulletDirection);
           Destroy(newBullet, 4.0f);
       }
 }
