@@ -99,3 +99,6 @@ MonoBehaviour:
   offset: {x: -7, y: 10, z: -7}
   player: {fileID: 0}
   followStrictness: 0.01
+  wallMaterial: {fileID: 2100000, guid: deef6885b22464a898ce9fde3f5961e2, type: 2}
+  transparentWallMaterial: {fileID: 2100000, guid: 0615b0d5d42244282ab42ab5912d7c40,
+    type: 2}
