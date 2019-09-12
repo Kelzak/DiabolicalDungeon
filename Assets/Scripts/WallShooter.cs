@@ -21,7 +21,8 @@ public class WallShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Physics.BoxCast(transform.position, new Vector3(10f, 20f, 10f), -1 *transform.up, Quaternion.LookRotation(-1 * transform.up), 100f, LayerMask.GetMask("Player")))
+        var orientation = transform.up;
+        if(Physics.BoxCast(transform.position + (5* transform.up), new Vector3(5f, 5f, 5f), -orientation, Quaternion.identity, 100f, LayerMask.GetMask("Player")))
         {
           playerIsInSideWallShotRange = true;
             Debug.Log("hitting player");
@@ -33,11 +34,11 @@ public class WallShooter : MonoBehaviour
 
     void FixedUpdate()
     {
-      if ( playerIsInSideWallShotRange == true && Time.time >= timeCheck)
-        {
-        fire();
-        timeCheck = Time.time + shotDelay;
-        }
+      //if ( playerIsInSideWallShotRange == true && Time.time >= timeCheck)
+      //  {
+      //  fire();
+      //  timeCheck = Time.time + shotDelay;
+      //  }
     }
 
       void fire()
