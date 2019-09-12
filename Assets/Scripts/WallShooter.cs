@@ -25,8 +25,9 @@ public class WallShooter : MonoBehaviour
         {
           playerIsInSideWallShotRange = true;
             Debug.Log("hitting player");
-
-
+        }
+        else {
+          playerIsInSideWallShotRange = false;
         }
     }
 

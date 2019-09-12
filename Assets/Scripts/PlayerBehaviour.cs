@@ -135,7 +135,7 @@ public class PlayerBehaviour : MonoBehaviour
           playerLives -= 1;
             Debug.Log("Lava damaged the player");
         }
-        if (other.tag == ("SideWallBullet"))
+        if (other.tag == ("WallShooterBullet"))
           {
             playerLives -= 1;
             Destroy(other.gameObject);
