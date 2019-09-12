@@ -864,6 +864,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1593354538}
+    - target: {fileID: 5796749568159218517, guid: ef6e2281c0a5c4e3d96e0b079ac0e817,
+        type: 3}
+      propertyPath: offset.y
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6e2281c0a5c4e3d96e0b079ac0e817, type: 3}
 --- !u!1 &2100735542
