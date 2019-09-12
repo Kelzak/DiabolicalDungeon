@@ -11,6 +11,7 @@ public class WallShooter : MonoBehaviour
   float shotDelay = 1f;
   float timeCheck;
   public Vector3 bulletDirection;
+  bool playerIsInSideWallShotRange = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,17 +23,20 @@ public class WallShooter : MonoBehaviour
     {
         if(Physics.BoxCast(transform.position, new Vector3(10f, 20f, 10f), -1 *transform.up, Quaternion.LookRotation(-1 * transform.up), 100f, LayerMask.GetMask("Player")))
         {
+          playerIsInSideWallShotRange = true;
             Debug.Log("hitting player");
+
+
         }
     }
 
     void FixedUpdate()
     {
-      //if (/* player is in the WallShooter area && */ Time.time >= timeCheck)
-      //  {
-      //  fire();
-      //  timeCheck = Time.time + shotDelay;
-      //  }
+      if ( playerIsInSideWallShotRange == true && Time.time >= timeCheck)
+        {
+        fire();
+        timeCheck = Time.time + shotDelay;
+        }
     }
 
 
