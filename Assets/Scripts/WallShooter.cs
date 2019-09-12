@@ -32,8 +32,6 @@ public class WallShooter : MonoBehaviour
         }
     }
 
-
-
       void fire()
       {
           GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
