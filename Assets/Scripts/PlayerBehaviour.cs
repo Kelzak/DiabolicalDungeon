@@ -7,6 +7,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float moveSpeed;
     private float playerLives = 3;
     private Vector3 respawnPosition;
+    private GameObject swapTarget;
 
     private Rigidbody rb;
     private Camera cam;
@@ -59,7 +60,7 @@ public class PlayerBehaviour : MonoBehaviour
         target.position = tempStorage;
     }
 
-    void respawn()
+    void Respawn()
     {
       if(playerLives <= 0)
       {
