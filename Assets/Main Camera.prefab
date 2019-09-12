@@ -93,7 +93,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 311411437584162404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf542947f52041f7ace8dbb2b98a049, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a484f4b958fc4c429d4294663fa526e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 6, z: -5.1}
