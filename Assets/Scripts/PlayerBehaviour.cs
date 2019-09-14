@@ -74,6 +74,14 @@ public class PlayerBehaviour : MonoBehaviour
                 hit.collider.gameObject.GetComponent<EnemyBehaviour>().MakeTarget(true);
                 swapTarget = hit.collider.gameObject;
             }
+            else
+            {
+                if(swapTarget != null)
+                {
+                    swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(false);
+                }
+                swapTarget = null;
+            }
         }
         //Deselect if out of range
         if(swapTarget != null && Vector3.Distance(swapTarget.transform.position, transform.position) > swapRange)
@@ -83,7 +91,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         //Teleporting
-        if(Input.GetKeyDown(KeyCode.Q) && canSwap && swapTarget != null)
+        if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)) && canSwap && swapTarget != null)
         {
             SwapTeleport(swapTarget.transform);
         }
