@@ -10,8 +10,8 @@ public class WallShooter : MonoBehaviour
   public float speedZ = 0;
   float shotDelay = 1f;
   float timeCheck;
-  public Vector3 bulletDirection ;
-  private Vector3 bulletspawn = (transform.position.x, transform.position.y - 3, transform.position.z);
+  public Vector3 bulletDirection;
+  private Vector3 bulletspawn;
   bool playerIsInSideWallShotRange = false;
     // Start is called before the first frame update
     void Start()
