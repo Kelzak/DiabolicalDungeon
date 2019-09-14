@@ -156,7 +156,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
     void OnCollisionEnter(Collision Collision)
     {
-if(Collision.collider.tag == ("BaseEnemy"))
+if(Collision.collider.tag == ("Enemy"))
 {
   playerLives -= 1;
   Debug.Log("Player walked into enemy");
