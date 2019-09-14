@@ -53,7 +53,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         var moveDirection = forward * yValue + right * xValue;
 
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
 
         //Cooldown Canvas Rotation
         cooldownCanvas.transform.LookAt(Camera.main.transform);
