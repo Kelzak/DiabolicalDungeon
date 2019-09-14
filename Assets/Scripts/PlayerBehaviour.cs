@@ -148,17 +148,18 @@ public class PlayerBehaviour : MonoBehaviour
             playerLives -= 1;
             Destroy(other.gameObject);
             Debug.Log("Bullet damaged the player");
-
           }
-          if (other.tag == ("BaseEnemy"))
-            {
-              playerLives -= 1;
-              Debug.Log("Player walked into enemy");
-
-            }
         if (other.tag == ("DeathPlane"))
         {
             playerLives = 0;
         }
+    }
+    void OnCollisionEnter(Collision Collision)
+    {
+if(Collision.collider.tag == ("BaseEnemy"))
+{
+  playerLives -= 1;
+  Debug.Log("Player walked into enemy");
+}
     }
 }
