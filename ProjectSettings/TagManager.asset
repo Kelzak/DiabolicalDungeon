@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - WallShooter
   - WallShooterBullet
+  - DeathPlane
   layers:
   - Default
   - TransparentFX
