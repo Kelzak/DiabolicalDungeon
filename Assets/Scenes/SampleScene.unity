@@ -1670,7 +1670,7 @@ MonoBehaviour:
   speedX: 0
   speedY: 0
   speedZ: 0
-  bulletDirection: {x: 0, y: 500, z: 0}
+  bulletDirection: {x: 0, y: -500, z: 0}
 --- !u!65 &1859172270
 BoxCollider:
   m_ObjectHideFlags: 0

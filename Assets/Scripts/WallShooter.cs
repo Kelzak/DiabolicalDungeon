@@ -10,14 +10,14 @@ public class WallShooter : MonoBehaviour
   public float speedZ = 0;
   float shotDelay = 1f;
   float timeCheck;
-  public Vector3 bulletDirection;
+  public Vector3 bulletDirection ;
+  private Vector3 bulletspawn = (transform.position.x, transform.position.y - 3, transform.position.z);
   bool playerIsInSideWallShotRange = false;
     // Start is called before the first frame update
     void Start()
     {
-        //bulletDirection = (speedX, speedY, speedZ);
-    }
 
+}
     // Update is called once per frame
     void Update()
     {
@@ -43,7 +43,7 @@ public class WallShooter : MonoBehaviour
 
       void fire()
       {
-          GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
+          GameObject newBullet = Instantiate(bullet, bulletDirection, transform.rotation);
           newBullet.GetComponent<Rigidbody>().AddRelativeForce(bulletDirection);
           Destroy(newBullet, 4.0f);
       }
