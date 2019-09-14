@@ -34,11 +34,11 @@ public class WallShooter : MonoBehaviour
 
     void FixedUpdate()
     {
-      //if ( playerIsInSideWallShotRange == true && Time.time >= timeCheck)
-      //  {
-      //  fire();
-      //  timeCheck = Time.time + shotDelay;
-      //  }
+      if ( playerIsInSideWallShotRange == true && Time.time >= timeCheck)
+        {
+         fire();
+         timeCheck = Time.time + shotDelay;
+        }
     }
 
       void fire()

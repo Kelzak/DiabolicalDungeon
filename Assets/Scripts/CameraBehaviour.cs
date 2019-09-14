@@ -13,15 +13,19 @@ public class CameraBehaviour : MonoBehaviour
 
     private Vector3 target;
     private ArrayList lastTransparentWalls;
+    private float yPos;
 
     void Start()
     {
+        transform.position = player.transform.position + offset;
+        yPos = transform.position.y;
         lastTransparentWalls = new ArrayList();
     }
 
     void Update()
     {
         target = player.transform.position + offset;
+        target.y = yPos;
 
         //determines what proportion of the distance to the player to move the camera, depending on deltaTime
         float moveProportion = Mathf.Pow(followStrictness, Time.deltaTime);

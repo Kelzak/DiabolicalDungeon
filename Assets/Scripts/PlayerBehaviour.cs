@@ -34,7 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
       Respawn();
-      
+
         //Movement
         var yValue = Input.GetAxis("Vertical");
         var xValue = Input.GetAxis("Horizontal");
@@ -127,6 +127,12 @@ public class PlayerBehaviour : MonoBehaviour
         transform.position = respawnPosition;
         playerLives = 3;
         }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+          transform.position = respawnPosition;
+          playerLives = 3;
+          }
     }
 
     void OnTriggerEnter(Collider other)
@@ -142,7 +148,18 @@ public class PlayerBehaviour : MonoBehaviour
             playerLives -= 1;
             Destroy(other.gameObject);
             Debug.Log("Bullet damaged the player");
-
           }
+        if (other.tag == ("DeathPlane"))
+        {
+            playerLives = 0;
+        }
+    }
+    void OnCollisionEnter(Collision Collision)
+    {
+if(Collision.collider.tag == ("Enemy"))
+{
+  playerLives -= 1;
+  Debug.Log("Player walked into enemy");
+}
     }
 }
