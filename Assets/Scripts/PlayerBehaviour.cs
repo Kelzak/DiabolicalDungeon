@@ -150,5 +150,9 @@ public class PlayerBehaviour : MonoBehaviour
             Debug.Log("Bullet damaged the player");
 
           }
+        if (other.tag == ("DeathPlane"))
+        {
+            playerLives = 0;
+        }
     }
 }
