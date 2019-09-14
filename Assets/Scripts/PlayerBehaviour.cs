@@ -34,7 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
       Respawn();
-      
+
         //Movement
         var yValue = Input.GetAxis("Vertical");
         var xValue = Input.GetAxis("Horizontal");
@@ -53,7 +53,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         var moveDirection = forward * yValue + right * xValue;
 
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
 
         //Cooldown Canvas Rotation
         cooldownCanvas.transform.LookAt(Camera.main.transform);
@@ -127,6 +127,12 @@ public class PlayerBehaviour : MonoBehaviour
         transform.position = respawnPosition;
         playerLives = 3;
         }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+          transform.position = respawnPosition;
+          playerLives = 3;
+          }
     }
 
     void OnTriggerEnter(Collider other)
