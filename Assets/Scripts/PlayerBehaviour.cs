@@ -91,7 +91,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         //Teleporting
-        if(Input.GetMouseButtonDown(1) && canSwap && swapTarget != null)
+        if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)) && canSwap && swapTarget != null)
         {
             SwapTeleport(swapTarget.transform);
         }
