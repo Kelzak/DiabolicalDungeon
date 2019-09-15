@@ -65,8 +65,9 @@ public class PlayerBehaviour : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100) && hit.collider.tag == "Enemy" && Vector3.Distance(hit.collider.transform.position, transform.position) < swapRange)
+            if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ignore Raycast")) && hit.collider.tag == "Enemy" && Vector3.Distance(hit.collider.transform.position, transform.position) < swapRange)
             {
+ 
                 if (swapTarget != null)
                 {
                     swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(false);
