@@ -71,7 +71,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ignore Raycast")) && hit.collider.tag == "Enemy" && Vector3.Distance(hit.collider.transform.position, transform.position) < swapRange)
             {
- 
+
                 if (swapTarget != null)
                 {
                     swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(false);
@@ -153,7 +153,7 @@ public class PlayerBehaviour : MonoBehaviour
       if (other.tag == ("LavaPit"))
         {
             Debug.Log("Lava has been hit");
-          playerLives -= 1;
+          playerLives -= 3;
             Debug.Log("Lava damaged the player");
         }
         if (other.tag == ("WallShooterBullet"))
