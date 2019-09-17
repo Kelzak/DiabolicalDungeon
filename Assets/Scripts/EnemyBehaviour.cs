@@ -74,7 +74,7 @@ public class EnemyBehaviour : MonoBehaviour
         while(currentState == State.Attacking)
         {
             playerPos = player.position;
-            agent.SetDestination(playerPos);
+            agent.SetDestination(transform.TransformPoint(playerPos * 3));
             Physics.Raycast(transform.position, (playerPos - transform.position).normalized, out hit, Mathf.Infinity, layerToIgnore);
             if (hit.collider != null && hit.collider.tag != "Player")
             {
@@ -90,9 +90,9 @@ public class EnemyBehaviour : MonoBehaviour
         yield return new WaitForSeconds(shootSpeed / 2);
         while (currentState == State.Attacking)
         {
-            var spawnPosition = transform.position + (transform.forward * 2);
-            var newBullet = Instantiate<GameObject>(projectile, spawnPosition, Quaternion.Euler(0,0,90f));
-            newBullet.GetComponent<Rigidbody>().AddRelativeForce(transform.forward);
+            var spawnPosition = transform.position + (transform.forward * 1.25f);
+            var newBullet = Instantiate<GameObject>(projectile, spawnPosition, Quaternion.Euler(0, transform.eulerAngles.y + 90f ,90f));
+            newBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 500, 0));
             Destroy(newBullet, 4.0f);
             yield return new WaitForSeconds(shootSpeed);
         }
