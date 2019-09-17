@@ -12,6 +12,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public Canvas cooldownCanvas;
     public Slider cooldownSlider;
+    public GameObject range;
     private Vector3 respawnPosition;
     private GameObject swapTarget;
     private bool canSwap = true;
@@ -54,10 +55,13 @@ public class PlayerBehaviour : MonoBehaviour
         var moveDirection = forward * yValue + right * xValue;
 
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+        transform.rotation = Quaternion.Euler(0, 360 - (Mathf.Rad2Deg * Mathf.Atan2(moveDirection.z, moveDirection.x)), 0);
 
         //Cooldown Canvas Rotation
         cooldownCanvas.transform.LookAt(Camera.main.transform);
         cooldownCanvas.transform.Rotate(0, 180f, 0);
+
+        range.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
 
         //Clicking to Select Teleport Target
         if (Input.GetMouseButtonDown(0))
