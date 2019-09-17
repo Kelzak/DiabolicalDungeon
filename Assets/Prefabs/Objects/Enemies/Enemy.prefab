@@ -120,9 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052d29e3a0c38904f81d21622bf4844c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1709174164993316385, guid: 1e739cdd4a6694a179c11e367f3278b9,
+  projectile: {fileID: 2845599397631123086, guid: ac397a88c906a4f0bab63b2e170af97b,
     type: 3}
   shootSpeed: 5
+  followDistance: 3
 --- !u!54 &6426089125548951115
 Rigidbody:
   m_ObjectHideFlags: 0

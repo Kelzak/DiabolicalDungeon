@@ -8,7 +8,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float moveSpeed;
     public float swapRange = 8f;
     public float swapCooldown = 5f;
-    public float playerLives = 3;
+    public float playerLives = 300;
 
     public Canvas cooldownCanvas;
     public Slider cooldownSlider;
@@ -153,9 +153,17 @@ public class PlayerBehaviour : MonoBehaviour
       if (other.tag == ("LavaPit"))
         {
             Debug.Log("Lava has been hit");
-          playerLives -= 3;
+          playerLives -= 1;
             Debug.Log("Lava damaged the player");
         }
+
+        if (other.tag == ("Pitfall"))
+          {
+              Debug.Log("Pitfall has been hit");
+            playerLives = 0;
+              Debug.Log("Pitfall damaged the player");
+            }
+
         if (other.tag == ("WallShooterBullet"))
           {
             playerLives -= 1;

@@ -11,6 +11,8 @@ TagManager:
   - WallShooterBullet
   - DeathPlane
   - BaseEnemy
+  - Pitfall
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
