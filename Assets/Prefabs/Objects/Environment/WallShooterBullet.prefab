@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1709174164993316387}
   - component: {fileID: 1709174164993316384}
   - component: {fileID: 1709174164993316388}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WallShooterBullet
   m_TagString: WallShooterBullet
   m_Icon: {fileID: 0}

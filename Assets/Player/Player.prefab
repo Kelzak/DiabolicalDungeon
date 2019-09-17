@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  swapRange: 8
+  swapRange: 15
   swapCooldown: 3
   playerLives: 3
   cooldownCanvas: {fileID: 1604099586563736758}

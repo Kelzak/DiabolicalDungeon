@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    public GameObject projectile;
+    public float shootSpeed;
+
     private Behaviour halo;
     private NavMeshAgent agent;
     private LayerMask layerToIgnore;
@@ -64,7 +67,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     IEnumerator Attacking()
     {
-
+        StartCoroutine(Shoot());
         Vector3 playerPos;
         RaycastHit hit;
 
@@ -80,5 +83,18 @@ public class EnemyBehaviour : MonoBehaviour
             yield return null;
         }
         StartCoroutine(Idle());
+    }
+
+    private IEnumerator Shoot()
+    {
+        yield return new WaitForSeconds(shootSpeed / 2);
+        while (currentState == State.Attacking)
+        {
+            var spawnPosition = transform.position + (transform.forward * 2);
+            var newBullet = Instantiate<GameObject>(projectile, spawnPosition, Quaternion.Euler(0,0,90f));
+            newBullet.GetComponent<Rigidbody>().AddRelativeForce(transform.forward);
+            Destroy(newBullet, 4.0f);
+            yield return new WaitForSeconds(shootSpeed);
+        }
     }
 }
