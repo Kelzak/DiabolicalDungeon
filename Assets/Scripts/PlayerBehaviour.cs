@@ -27,8 +27,6 @@ public class PlayerBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         respawnPosition = transform.position;
-
-        range.transform.localScale = new Vector3(2 * swapRange, 0.01f, 2 * swapRange);
     }
 
     // Update is called once per frame
@@ -62,6 +60,11 @@ public class PlayerBehaviour : MonoBehaviour
         cooldownCanvas.transform.Rotate(0, 180f, 0);
 
         range.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+
+        float rangeVO = range.transform.position.y - transform.position.y;
+        rangeVO = Mathf.Abs(rangeVO);
+        float rangeW = Mathf.Sqrt((4 * swapRange * swapRange) - (rangeVO * rangeVO));
+        range.transform.localScale = new Vector3(rangeW, 0.01f, rangeW);
 
         //Clicking to Select Teleport Target
         if (Input.GetMouseButtonDown(0))
