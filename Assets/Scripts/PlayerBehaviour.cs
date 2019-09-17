@@ -28,7 +28,7 @@ public class PlayerBehaviour : MonoBehaviour
         cam = Camera.main;
         respawnPosition = transform.position;
 
-
+        range.transform.localScale = new Vector3(2 * swapRange, 0.01f, 2 * swapRange);
     }
 
     // Update is called once per frame
