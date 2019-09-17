@@ -3957,7 +3957,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: f4ff0ab47e0ad9f4980a25e5304c9e1c,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: 'Wizard '
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: f4ff0ab47e0ad9f4980a25e5304c9e1c,
         type: 3}
@@ -3972,7 +3972,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: f4ff0ab47e0ad9f4980a25e5304c9e1c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f4ff0ab47e0ad9f4980a25e5304c9e1c,
         type: 3}
@@ -4426,7 +4426,7 @@ PrefabInstance:
     - target: {fileID: 1137878999810158871, guid: 9176f4bb37d2ce3449a1f5ecd2b70be4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6148880737952999510, guid: 9176f4bb37d2ce3449a1f5ecd2b70be4,
         type: 3}
