@@ -1247,7 +1247,7 @@ PrefabInstance:
     - target: {fileID: 3697213224652309602, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.134333
+      value: 7.22
       objectReference: {fileID: 0}
     - target: {fileID: 3697213224652309602, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
@@ -1709,6 +1709,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023325908278641290, guid: c685ae42ef36a3d47ba5dd95a5a47972,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4791063950209690056, guid: c685ae42ef36a3d47ba5dd95a5a47972,
         type: 3}
@@ -3759,7 +3764,7 @@ PrefabInstance:
     - target: {fileID: 3697213224652309602, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.81433
+      value: 23.1
       objectReference: {fileID: 0}
     - target: {fileID: 3697213224652309602, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
