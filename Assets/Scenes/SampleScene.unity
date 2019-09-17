@@ -182,7 +182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!208 &242950750
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -292,7 +292,7 @@ PrefabInstance:
     - target: {fileID: 3697213224652309602, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.27
+      value: 9.2
       objectReference: {fileID: 0}
     - target: {fileID: 3697213224652309602, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
@@ -302,7 +302,7 @@ PrefabInstance:
     - target: {fileID: 3697213224652309602, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.52
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3697213224652309602, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
@@ -2342,6 +2342,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1355699821}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1413728708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1137878999810158871, guid: 9176f4bb37d2ce3449a1f5ecd2b70be4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2871965594990015097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1434656631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4791063950209690056, guid: c685ae42ef36a3d47ba5dd95a5a47972,
@@ -3951,7 +3957,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: f4ff0ab47e0ad9f4980a25e5304c9e1c,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: 'Wizard '
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: f4ff0ab47e0ad9f4980a25e5304c9e1c,
         type: 3}
@@ -3962,6 +3968,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f4ff0ab47e0ad9f4980a25e5304c9e1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f4ff0ab47e0ad9f4980a25e5304c9e1c,
         type: 3}
@@ -4116,7 +4127,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1870454970}
+      objectReference: {fileID: 1413728708}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6e2281c0a5c4e3d96e0b079ac0e817, type: 3}
 --- !u!1 &1921362127
@@ -4151,7 +4162,7 @@ RectTransform:
   m_Children:
   - {fileID: 1659716766}
   m_Father: {fileID: 1870454971}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
