@@ -173,6 +173,13 @@ public class PlayerBehaviour : MonoBehaviour
             Destroy(other.gameObject);
             Debug.Log("Bullet damaged the player");
           }
+
+          if (other.tag == ("EnemyBullet"))
+            {
+              playerLives -= 1;
+              Destroy(other.gameObject);
+              Debug.Log("Bullet damaged the player");
+            }
         if (other.tag == ("DeathPlane"))
         {
             playerLives = 0;
