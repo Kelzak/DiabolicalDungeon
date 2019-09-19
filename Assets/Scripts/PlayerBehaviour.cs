@@ -76,7 +76,7 @@ public class PlayerBehaviour : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ignore Raycast")) && hit.collider.tag == "Enemy" && Vector3.Distance(hit.collider.transform.position, transform.position) < swapRange)
+            if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ignore Raycast")) && (hit.collider.tag == "Enemy" || hit.collider.tag == "DoorBall") && Vector3.Distance(hit.collider.transform.position, transform.position) < swapRange)
             {
 
                 if (swapTarget != null)
@@ -170,7 +170,7 @@ public class PlayerBehaviour : MonoBehaviour
       if (other.tag == ("LavaPit"))
         {
             Debug.Log("Lava has been hit");
-          playerLives -= 1;
+          playerLives = 0;
             Debug.Log("Lava damaged the player");
         }
 

@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
     public PathingType pathType;
     public Vector3[] pathMovements;
     public float moveSpeed = 2.5f;
+    public bool canShoot = true;
 
     private Behaviour halo;
     private NavMeshAgent agent;
@@ -86,14 +87,14 @@ public class EnemyBehaviour : MonoBehaviour
         while (currentState == State.Idle)
         {
             playerPos = player.position;
-            
+
             RaycastHit hit;
             Physics.Raycast(transform.position, (playerPos - transform.position).normalized, out hit, sightRange, layerToIgnore);
             if (hit.collider != null && hit.collider.tag == "Player")
             {
                 currentState = State.Attacking;
             }
-            
+
             yield return null;
         }
         StartCoroutine(Attacking());
@@ -131,7 +132,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         shooting = true;
         yield return new WaitForSecondsRealtime(shootSpeed / 2);
-        while (currentState == State.Attacking)
+        while (currentState == State.Attacking && canShoot == true)
         {
             var spawnPosition = transform.position + (transform.forward * 1.25f);
             var newBullet = Instantiate<GameObject>(projectile, spawnPosition, Quaternion.Euler(0, transform.eulerAngles.y + 90f ,90f));
@@ -176,5 +177,5 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
 
-    
+
 }
