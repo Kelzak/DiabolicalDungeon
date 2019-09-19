@@ -174,6 +174,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
           transform.position = respawnPosition;
           playerLives = 5;
+          SceneManager.LoadScene(0);
           }
           if(Input.GetKeyDown(KeyCode.T))
           {
