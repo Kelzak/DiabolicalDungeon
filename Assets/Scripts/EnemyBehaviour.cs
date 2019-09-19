@@ -8,9 +8,15 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject projectile;
     public float shootSpeed;
     public float followDistance = 3;
+    public float sightRange = 20f;
+    public enum PathingType { Follow, Path}
+    public PathingType pathType;
+    public Vector3[] pathMovements;
+    public float moveSpeed = 2.5f;
 
     private Behaviour halo;
     private NavMeshAgent agent;
+    private NavMeshPath path;
     private LayerMask layerToIgnore;
 
     private Transform player;
@@ -25,8 +31,21 @@ public class EnemyBehaviour : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
+        agent.speed = moveSpeed;
 
         layerToIgnore = ~LayerMask.GetMask("Ignore Raycast");
+
+        if(pathType == PathingType.Path && pathMovements.Length != 0)
+        {
+            if (!isPathing)
+            {
+                StartCoroutine(FollowPath());
+            }
+        }
+        else
+        {
+            pathType = PathingType.Follow;
+        }
         StartCoroutine(Idle());
     }
 
@@ -48,14 +67,17 @@ public class EnemyBehaviour : MonoBehaviour
     {
 
         Vector3 playerPos;
-        agent.SetDestination(transform.position);
+        if (pathType == PathingType.Follow)
+        {
+            agent.SetDestination(transform.position);
+        }
 
         while (currentState == State.Idle)
         {
             playerPos = player.position;
             
             RaycastHit hit;
-            Physics.Raycast(transform.position, (playerPos - transform.position).normalized, out hit, Mathf.Infinity, layerToIgnore);
+            Physics.Raycast(transform.position, (playerPos - transform.position).normalized, out hit, sightRange, layerToIgnore);
             if (hit.collider != null && hit.collider.tag == "Player")
             {
                 currentState = State.Attacking;
@@ -79,8 +101,11 @@ public class EnemyBehaviour : MonoBehaviour
         while(currentState == State.Attacking)
         {
             playerPos = player.position;
-            agent.SetDestination(playerPos + (transform.position - playerPos).normalized * followDistance);
-            Physics.Raycast(transform.position, (playerPos - transform.position).normalized, out hit, Mathf.Infinity, layerToIgnore);
+            if (pathType == PathingType.Follow)
+            {
+                agent.SetDestination(playerPos + (transform.position - playerPos).normalized * followDistance);
+            }
+            Physics.Raycast(transform.position, (playerPos - transform.position).normalized, out hit, sightRange, layerToIgnore);
             if (hit.collider != null && hit.collider.tag != "Player")
             {
                 currentState = State.Idle;
@@ -106,10 +131,32 @@ public class EnemyBehaviour : MonoBehaviour
         shooting = false;
     }
 
+    bool isPathing = false;
+    private IEnumerator FollowPath()
+    {
+        isPathing = true;
+        while (pathType == PathingType.Path)
+        {
+            foreach (Vector3 point in pathMovements)
+            {
+                var newDestination = transform.position + point;
+                agent.destination = newDestination;
+                while(!(agent.remainingDistance != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance == 0))
+                {
+                    yield return null;
+                }
+                yield return null;
+            }
+            yield return null;
+        }
+        isPathing = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "LavaPit" || other.tag == "WallShooterBullet")
         {
+            StopAllCoroutines();
             Destroy(gameObject);
         }
 
