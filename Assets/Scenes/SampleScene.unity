@@ -344,7 +344,7 @@ MonoBehaviour:
   moveSpeed: 5
   swapRange: 10
   swapCooldown: 5
-  playerLives: 300
+  playerLives: 3
   cooldownCanvas: {fileID: 2074187614}
   cooldownSlider: {fileID: 340376939}
   range: {fileID: 1279812552}
