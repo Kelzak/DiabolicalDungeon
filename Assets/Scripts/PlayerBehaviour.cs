@@ -8,7 +8,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float moveSpeed;
     public float swapRange = 8f;
     public float swapCooldown = 5f;
-    public float playerLives = 300;
+    public float playerLives = 3;
 
     public Canvas cooldownCanvas;
     public Slider cooldownSlider;
