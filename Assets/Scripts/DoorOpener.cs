@@ -6,7 +6,7 @@ public class DoorOpener : MonoBehaviour
 {
 
   public GameObject doorOpenerCube;
-  public static bool doorIsThere = true;
+  public bool doorIsThere = true;
     // Start is called before the first frame update
     void Start()
     {

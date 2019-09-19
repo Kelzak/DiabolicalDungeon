@@ -1294,12 +1294,12 @@ PrefabInstance:
       propertyPath: canShoot
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7352643606487985623, guid: 308b3bafe3405624892f1f21422ecea5,
+    - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
+    - target: {fileID: 7352643606487985623, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3771,6 +3771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorOpenerCube: {fileID: 1612852461}
+  doorIsThere: 1
 --- !u!65 &873523378
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5407,6 +5408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorOpenerCube: {fileID: 1046255899}
+  doorIsThere: 1
 --- !u!65 &1215542968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5912,6 +5914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorOpenerCube: {fileID: 1922267192}
+  doorIsThere: 1
 --- !u!65 &1398994652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9631,6 +9634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorOpenerCube: {fileID: 1737269152}
+  doorIsThere: 1
 --- !u!65 &2113003107
 BoxCollider:
   m_ObjectHideFlags: 0

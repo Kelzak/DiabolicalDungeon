@@ -113,7 +113,7 @@ public class EnemyBehaviour : MonoBehaviour
         while(currentState == State.Attacking)
         {
             playerPos = player.position;
-            if (pathType == PathingType.Follow && agent.enabled == true)
+            if (pathType == PathingType.Follow)
             {
                 agent.SetDestination(playerPos + (transform.position - playerPos).normalized * followDistance);
             }
