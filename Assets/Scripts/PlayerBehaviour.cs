@@ -11,6 +11,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float swapRange = 8f;
     public float swapCooldown = 5f;
     public float playerLives = 3;
+    public Vector3 skipTopuzzle;
 
     public Canvas cooldownCanvas;
     public Slider cooldownSlider;
@@ -154,15 +155,21 @@ public class PlayerBehaviour : MonoBehaviour
       if(playerLives <= 0)
       {
         transform.position = respawnPosition;
-        playerLives = 3;
+        playerLives = 5;
             SceneManager.LoadScene(0);
        }
 
         if(Input.GetKeyDown(KeyCode.R))
         {
           transform.position = respawnPosition;
-          playerLives = 3;
+          playerLives = 5;
           }
+          if(Input.GetKeyDown(KeyCode.T))
+          {
+            transform.position = skipTopuzzle;
+            playerLives = 5;
+            }
+
     }
 
     void OnTriggerEnter(Collider other)
