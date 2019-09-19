@@ -49,6 +49,17 @@ public class EnemyBehaviour : MonoBehaviour
         StartCoroutine(Idle());
     }
 
+    private void Update()
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, -transform.up, out hit, Mathf.Infinity);
+        if(hit.collider.tag == "LavaPit")
+        {
+            GetComponent<NavMeshAgent>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = false;
+        }
+    }
+
     private void LateUpdate()
     {
         if (currentState == State.Attacking)
@@ -101,7 +112,7 @@ public class EnemyBehaviour : MonoBehaviour
         while(currentState == State.Attacking)
         {
             playerPos = player.position;
-            if (pathType == PathingType.Follow)
+            if (pathType == PathingType.Follow && agent.enabled == true)
             {
                 agent.SetDestination(playerPos + (transform.position - playerPos).normalized * followDistance);
             }
@@ -140,10 +151,13 @@ public class EnemyBehaviour : MonoBehaviour
             foreach (Vector3 point in pathMovements)
             {
                 var newDestination = transform.position + point;
-                agent.destination = newDestination;
-                while(!(agent.remainingDistance != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance == 0))
+                if (agent.enabled == true)
                 {
-                    yield return null;
+                    agent.destination = newDestination;
+                    while (agent.enabled == true && !(agent.remainingDistance != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance == 0))
+                    {
+                        yield return null;
+                    }
                 }
                 yield return null;
             }
@@ -161,4 +175,6 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
     }
+
+    
 }
