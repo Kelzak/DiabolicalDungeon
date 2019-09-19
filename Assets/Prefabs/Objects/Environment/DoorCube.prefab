@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3885743347114461782}
   - component: {fileID: 1880354540680753493}
   - component: {fileID: 4585040515801764697}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: DoorCube
   m_TagString: DoorBall
   m_Icon: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   pathMovements: []
   moveSpeed: 0
   canShoot: 0
+  canDie: 0
 --- !u!54 &1880354540680753493
 Rigidbody:
   m_ObjectHideFlags: 0

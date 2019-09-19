@@ -35,7 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
         agent.updateRotation = false;
         agent.speed = moveSpeed;
 
-        layerToIgnore = ~LayerMask.GetMask("Ignore Raycast");
+        layerToIgnore = ~LayerMask.GetMask("Targetable");
 
         if(pathType == PathingType.Path && pathMovements.Length != 0)
         {

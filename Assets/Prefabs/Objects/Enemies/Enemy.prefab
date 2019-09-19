@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8564364907180555592}
   - component: {fileID: 6426089125548951115}
   - component: {fileID: 8977649275218060359}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -124,6 +124,12 @@ MonoBehaviour:
     type: 3}
   shootSpeed: 5
   followDistance: 3
+  sightRange: 20
+  pathType: 0
+  pathMovements: []
+  moveSpeed: 2.5
+  canShoot: 1
+  canDie: 1
 --- !u!54 &6426089125548951115
 Rigidbody:
   m_ObjectHideFlags: 0
