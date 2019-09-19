@@ -24,11 +24,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     private Rigidbody rb;
     private Camera cam;
+    private AudioSource auso;
 
-    //public AudioClip teleport;
-    //public AudioClip playerGetsHit;
-    //public AudioClip playerDeath;
-    //public AudioClip doorOpen;
+    public AudioClip teleport;
+    public AudioClip playerGetsHit;
+    public AudioClip playerDeath;
+    public AudioClip doorOpen;
 
 
     // Start is called before the first frame update
@@ -40,7 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         cooldownSlider.maxValue = swapCooldown;
 
-        //auso = GetComponent<AudioSource>();
+        auso = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -127,7 +128,7 @@ public class PlayerBehaviour : MonoBehaviour
         Vector3 tempPos = transform.position;
         transform.position = target.position;
         target.position = tempPos;
-        //auso.PlayOneShot(teleport, 0.3f);
+        auso.PlayOneShot(teleport, 0.3f);
 
         yield return new WaitForSeconds(0.1f);
 
@@ -188,7 +189,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Debug.Log("Lava has been hit");
           playerLives = 0;
-          //auso.PlayOneShot(playerGetsHit, 0.3f);
+          auso.PlayOneShot(playerGetsHit, 0.3f);
             Debug.Log("Lava damaged the player");
         }
 
@@ -197,7 +198,7 @@ public class PlayerBehaviour : MonoBehaviour
               Debug.Log("Pitfall has been hit");
             playerLives = 0;
               Debug.Log("Pitfall damaged the player");
-              //auso.PlayOneShot(playerGetsHit, 0.3f);
+              auso.PlayOneShot(playerGetsHit, 0.3f);
             }
 
         if (other.tag == ("WallShooterBullet"))
@@ -205,14 +206,14 @@ public class PlayerBehaviour : MonoBehaviour
             playerLives -= 1;
             Destroy(other.gameObject);
             Debug.Log("Bullet damaged the player");
-            //auso.PlayOneShot(playerGetsHit, 0.3f);
+            auso.PlayOneShot(playerGetsHit, 0.3f);
           }
 
           if (other.tag == ("EnemyBullet"))
             {
               playerLives -= 1;
               Destroy(other.gameObject);
-              //auso.PlayOneShot(playerGetsHit, 0.3f);
+              auso.PlayOneShot(playerGetsHit, 0.3f);
               Debug.Log("Bullet damaged the player");
             }
         if (other.tag == ("DeathPlane"))
