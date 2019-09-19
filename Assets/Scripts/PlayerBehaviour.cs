@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -27,6 +29,8 @@ public class PlayerBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         respawnPosition = transform.position;
+
+        cooldownSlider.maxValue = swapCooldown;
     }
 
     // Update is called once per frame
@@ -101,16 +105,25 @@ public class PlayerBehaviour : MonoBehaviour
         //Teleporting
         if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)) && canSwap && swapTarget != null)
         {
-            SwapTeleport(swapTarget.transform);
+            StartCoroutine(SwapTeleport(swapTarget.transform));
         }
 
     }
 
-    void SwapTeleport(Transform target)
+    IEnumerator SwapTeleport(Transform target)
     {
-        Vector3 tempStorage = transform.position;
+        target.GetComponent<NavMeshAgent>().enabled = false;
+
+        Vector3 tempPos = transform.position;
         transform.position = target.position;
-        target.position = tempStorage;
+        target.position = tempPos;
+
+        yield return new WaitForSeconds(0.1f);
+
+        if (target.GetComponent<Rigidbody>().isKinematic == true)
+        {
+            target.GetComponent<NavMeshAgent>().enabled = true;
+        }
 
         if (!cooldownActive)
         {
@@ -142,7 +155,8 @@ public class PlayerBehaviour : MonoBehaviour
       {
         transform.position = respawnPosition;
         playerLives = 3;
-        }
+            SceneManager.LoadScene(0);
+       }
 
         if(Input.GetKeyDown(KeyCode.R))
         {
