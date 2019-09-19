@@ -1529,12 +1529,12 @@ PrefabInstance:
       propertyPath: canShoot
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7352643606487985623, guid: 308b3bafe3405624892f1f21422ecea5,
+    - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
+    - target: {fileID: 7352643606487985623, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3528,7 +3528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746149969}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 52.77, y: 0, z: 160.96}
+  m_LocalPosition: {x: 52.77, y: 0, z: 160.35}
   m_LocalScale: {x: 9, y: 0.2, z: 25}
   m_Children: []
   m_Father: {fileID: 1601510604}
@@ -8974,7 +8974,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811006398}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.01, y: 0, z: 185.42}
+  m_LocalPosition: {x: 32.01, y: 0, z: 185.8}
   m_LocalScale: {x: 9, y: 0.2, z: 25}
   m_Children: []
   m_Father: {fileID: 1601510604}
