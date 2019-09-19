@@ -1529,12 +1529,12 @@ PrefabInstance:
       propertyPath: canShoot
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7352643606487985623, guid: 308b3bafe3405624892f1f21422ecea5,
+    - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
+    - target: {fileID: 7352643606487985623, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3533,7 +3533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746149969}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 52.77, y: 0, z: 160.96}
+  m_LocalPosition: {x: 52.77, y: 0, z: 160.35}
   m_LocalScale: {x: 9, y: 0.2, z: 25}
   m_Children: []
   m_Father: {fileID: 1601510604}
@@ -8979,7 +8979,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811006398}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.01, y: 0, z: 185.42}
+  m_LocalPosition: {x: 32.01, y: 0, z: 185.8}
   m_LocalScale: {x: 9, y: 0.2, z: 25}
   m_Children: []
   m_Father: {fileID: 1601510604}
@@ -9557,6 +9557,26 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 52494320}
+    - target: {fileID: 311411437584162402, guid: ef6e2281c0a5c4e3d96e0b079ac0e817,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 311411437584162402, guid: ef6e2281c0a5c4e3d96e0b079ac0e817,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 311411437584162402, guid: ef6e2281c0a5c4e3d96e0b079ac0e817,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 311411437584162402, guid: ef6e2281c0a5c4e3d96e0b079ac0e817,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6e2281c0a5c4e3d96e0b079ac0e817, type: 3}
 --- !u!1001 &1922267191
