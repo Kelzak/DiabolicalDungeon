@@ -169,7 +169,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "LavaPit" || other.tag == "WallShooterBullet")
+        if(other.tag == "LavaPit" || other.tag == "WallShooterBullet" || other.tag == "Pitfall" || other.tag == "EnemyBullet")
         {
             StopAllCoroutines();
             Destroy(gameObject);
