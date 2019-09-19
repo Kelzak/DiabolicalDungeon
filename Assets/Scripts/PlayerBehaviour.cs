@@ -167,15 +167,15 @@ public class PlayerBehaviour : MonoBehaviour
       {
         transform.position = respawnPosition;
         playerLives = 5;
-            SceneManager.LoadScene(0);
-       }
+        SceneManager.LoadScene(0);
+      }
 
         if(Input.GetKeyDown(KeyCode.R))
         {
           transform.position = respawnPosition;
           playerLives = 5;
           SceneManager.LoadScene(0);
-          }
+        }
           if(Input.GetKeyDown(KeyCode.T))
           {
             transform.position = skipTopuzzle;
@@ -218,6 +218,11 @@ public class PlayerBehaviour : MonoBehaviour
               Debug.Log("Bullet damaged the player");
             }
         if (other.tag == ("DeathPlane"))
+        {
+            playerLives = 0;
+        }
+
+        if (other.tag == ("PlayerWin"))
         {
             playerLives = 0;
         }
