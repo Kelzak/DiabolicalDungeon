@@ -14,6 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     public Vector3[] pathMovements;
     public float moveSpeed = 2.5f;
     public bool canShoot = true;
+    public bool canDie = true;
 
     private Behaviour halo;
     private NavMeshAgent agent;
@@ -169,7 +170,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "LavaPit" || other.tag == "WallShooterBullet" || other.tag == "Pitfall" || other.tag == "EnemyBullet")
+        if(other.tag == "LavaPit" || other.tag == "WallShooterBullet" || other.tag == "Pitfall" || other.tag == "EnemyBullet" && canDie == true)
         {
             StopAllCoroutines();
             Destroy(gameObject);

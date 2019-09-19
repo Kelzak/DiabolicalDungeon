@@ -227,6 +227,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
+        type: 3}
+      propertyPath: canDie
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_IsTrigger
@@ -813,6 +818,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
+        type: 3}
+      propertyPath: canDie
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_IsTrigger
@@ -1175,6 +1185,11 @@ PrefabInstance:
     - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: moveSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
+        type: 3}
+      propertyPath: canDie
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
@@ -2021,6 +2036,11 @@ PrefabInstance:
     - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: moveSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
+        type: 3}
+      propertyPath: canDie
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
@@ -3951,6 +3971,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
+        type: 3}
+      propertyPath: canDie
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_IsTrigger
@@ -4682,6 +4707,11 @@ PrefabInstance:
     - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: moveSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
+        type: 3}
+      propertyPath: canDie
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
@@ -5718,6 +5748,11 @@ PrefabInstance:
     - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: moveSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
+        type: 3}
+      propertyPath: canDie
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
@@ -7624,6 +7659,11 @@ PrefabInstance:
     - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: moveSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564364907180555592, guid: 308b3bafe3405624892f1f21422ecea5,
+        type: 3}
+      propertyPath: canDie
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
@@ -10754,6 +10794,11 @@ PrefabInstance:
     - target: {fileID: 8104633986167223164, guid: 46c12ee526fb44db28eddf038d7ab0d3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3885743347114461782, guid: 46c12ee526fb44db28eddf038d7ab0d3,
+        type: 3}
+      propertyPath: canDie
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
