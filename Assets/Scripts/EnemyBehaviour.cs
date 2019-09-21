@@ -180,8 +180,9 @@ public class EnemyBehaviour : MonoBehaviour
         {
             var spawnPosition = transform.position + (transform.forward * 1.25f);
             var newBullet = Instantiate<GameObject>(projectile, spawnPosition, Quaternion.Euler(0, transform.eulerAngles.y + 90f ,90f));
+            newBullet.AddComponent<BulletBehaviour>();
             newBullet.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 500, 0));
-            Destroy(newBullet, 4.0f);
+            Destroy(newBullet, 3.0f);
             yield return new WaitForSecondsRealtime(shootSpeed);
         }
         shooting = false;
