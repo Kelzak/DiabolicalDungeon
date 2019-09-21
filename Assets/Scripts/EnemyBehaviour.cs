@@ -28,9 +28,11 @@ public class EnemyBehaviour : MonoBehaviour
 
     private enum State { Idle, Attacking };
     private State currentState;
+    private Vector3 respawnPos;
 
     private void Start()
     {
+        respawnPos = transform.position;
         halo = (Behaviour)GetComponent("Halo");
         baseEmissionColor = new Color(0 / 255f, 15 / 255f, 0 / 255f);
 
@@ -247,8 +249,16 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(other.tag == "LavaPit" || other.tag == "WallShooterBullet" || other.tag == "Pitfall" || other.tag == "EnemyBullet" && canDie == true)
         {
-            StopAllCoroutines();
-            Destroy(gameObject);
+            if(tag == "DoorBall")
+            {
+                transform.position = respawnPos;
+                GetComponent<NavMeshAgent>().enabled = true;
+            }
+            else
+            {
+                StopAllCoroutines();
+                Destroy(gameObject);
+            }
         }
 
     }
