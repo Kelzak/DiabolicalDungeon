@@ -34,13 +34,15 @@ public class EnemyBehaviour : MonoBehaviour
     {
         respawnPos = transform.position;
         halo = (Behaviour)GetComponent("Halo");
-        baseEmissionColor = new Color(0 / 255f, 15 / 255f, 0 / 255f);
+       
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         mat = GetComponent<Renderer>().material;
         mat.EnableKeyword("_EMISSION");
 
         rend = GetComponent<Renderer>();
+
+        baseEmissionColor = mat.GetColor("_EmissionColor");
 
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
