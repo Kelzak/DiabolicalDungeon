@@ -496,7 +496,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: f3b74992920b7574db535e18f23c066a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.56
+      value: -4.3
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f3b74992920b7574db535e18f23c066a,
         type: 3}
@@ -506,7 +506,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: f3b74992920b7574db535e18f23c066a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5537488
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f3b74992920b7574db535e18f23c066a,
         type: 3}
@@ -578,7 +578,7 @@ MonoBehaviour:
   swapRange: 10
   swapCooldown: 5
   playerLives: 5
-  skipTopuzzle: {x: 27, y: 0, z: 160}
+  skipTopuzzle: {x: 14, y: 0.35, z: 182}
   cooldownCanvas: {fileID: 2074187614}
   cooldownSlider: {fileID: 340376939}
   range: {fileID: 1279812552}
