@@ -25,9 +25,11 @@ public class EnemyBehaviour : MonoBehaviour
 
     private enum State { Idle, Attacking };
     private State currentState;
+    private Vector3 respawnPos;
 
     private void Start()
     {
+        respawnPos = transform.position;
         halo = (Behaviour)GetComponent("Halo");
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -172,8 +174,16 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(other.tag == "LavaPit" || other.tag == "WallShooterBullet" || other.tag == "Pitfall" || other.tag == "EnemyBullet" && canDie == true)
         {
-            StopAllCoroutines();
-            Destroy(gameObject);
+            if(tag == "DoorBall")
+            {
+                transform.position = respawnPos;
+                GetComponent<NavMeshAgent>().enabled = true;
+            }
+            else
+            {
+                StopAllCoroutines();
+                Destroy(gameObject);
+            }
         }
 
     }
