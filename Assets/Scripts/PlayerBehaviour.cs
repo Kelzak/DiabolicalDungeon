@@ -20,6 +20,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector3 respawnPosition;
     private GameObject swapTarget;
     private bool canSwap = true;
+    private bool targetInRange = false;
     private float currentSwapCooldown;
 
     private Rigidbody rb;
@@ -87,7 +88,7 @@ public class PlayerBehaviour : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Targetable")) && (hit.collider.tag == "Enemy" || hit.collider.tag == "DoorBall") && Vector3.Distance(hit.collider.transform.position, transform.position) < swapRange)
+            if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Targetable")) && (hit.collider.tag == "Enemy" || hit.collider.tag == "DoorBall"))
             {
 
                 if (swapTarget != null)
@@ -104,12 +105,14 @@ public class PlayerBehaviour : MonoBehaviour
                     swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(0);
                 }
                 swapTarget = null;
+                targetInRange = false;
             }
         }
         //Deselect if out of range
         if(swapTarget != null && Vector3.Distance(swapTarget.transform.position, transform.position) > swapRange)
         {
             swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(2);
+            targetInRange = false;
         }
         else if(swapTarget != null && Vector3.Distance(swapTarget.transform.position, transform.position) <= swapRange)
         {
@@ -117,10 +120,11 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(1);
             }
+            targetInRange = true;
         }
 
         //Teleporting
-        if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)) && canSwap && swapTarget != null)
+        if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)) && canSwap && swapTarget != null && targetInRange)
         {
             StartCoroutine(SwapTeleport(swapTarget.transform));
         }
