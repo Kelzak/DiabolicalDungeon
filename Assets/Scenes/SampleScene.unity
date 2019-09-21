@@ -1636,12 +1636,12 @@ PrefabInstance:
       propertyPath: followDistance
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
+    - target: {fileID: 7352643606487985623, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7352643606487985623, guid: 308b3bafe3405624892f1f21422ecea5,
+    - target: {fileID: 3697213224652340127, guid: 308b3bafe3405624892f1f21422ecea5,
         type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3613,6 +3613,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4791063950209690056, guid: c685ae42ef36a3d47ba5dd95a5a47972,
     type: 3}
   m_PrefabInstance: {fileID: 929040232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &605563962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3697213224652340125, guid: 308b3bafe3405624892f1f21422ecea5,
+    type: 3}
+  m_PrefabInstance: {fileID: 273900127}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &661041975
 GameObject:
@@ -7822,12 +7828,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 273900127}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1510655061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3697213224652340125, guid: 308b3bafe3405624892f1f21422ecea5,
-    type: 3}
-  m_PrefabInstance: {fileID: 2047071507}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1519377059
 GameObject:
   m_ObjectHideFlags: 0
@@ -8714,6 +8714,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1602128818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3697213224652340125, guid: 308b3bafe3405624892f1f21422ecea5,
+    type: 3}
+  m_PrefabInstance: {fileID: 820684398}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1612852460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11829,14 +11835,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 472762145128731095, guid: 579e694c3f4bc4773b8d91762eaa4d43,
         type: 3}
+      propertyPath: requiredEnemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 472762145128731095, guid: 579e694c3f4bc4773b8d91762eaa4d43,
+        type: 3}
       propertyPath: requiredEnemies.Array.data[0]
       value: 
-      objectReference: {fileID: 1510655061}
+      objectReference: {fileID: 605563962}
     - target: {fileID: 472762145128731095, guid: 579e694c3f4bc4773b8d91762eaa4d43,
         type: 3}
       propertyPath: requiredEnemies.Array.data[1]
       value: 
-      objectReference: {fileID: 1905913332}
+      objectReference: {fileID: 1602128818}
     - target: {fileID: 472762145128731095, guid: 579e694c3f4bc4773b8d91762eaa4d43,
         type: 3}
       propertyPath: requiredEnemies.Array.data[2]
