@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 
 public class CameraBehaviour : MonoBehaviour
 {
@@ -14,12 +15,16 @@ public class CameraBehaviour : MonoBehaviour
     private Vector3 target;
     private ArrayList lastTransparentWalls;
     private float yPos;
+    private GameObject[] enemies;
+    private GameObject[] doorBalls;
 
     void Start()
     {
         transform.position = player.transform.position + offset;
         yPos = transform.position.y;
         lastTransparentWalls = new ArrayList();
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        doorBalls = GameObject.FindGameObjectsWithTag("DoorBall");
     }
 
     void Update()
@@ -56,6 +61,46 @@ public class CameraBehaviour : MonoBehaviour
             lastTransparentWalls.Add(lastTransparentWall);
 
             Physics.Raycast(playerView, out wallDetector, Mathf.Infinity);
+        }
+
+        foreach(GameObject enemy in enemies)
+        {
+            if (enemy != null && enemy.GetComponent<MeshRenderer>().isVisible)
+            {
+                Ray enemyView = GetComponent<Camera>().ScreenPointToRay(GetComponent<Camera>().WorldToScreenPoint(enemy.transform.position));
+                RaycastHit enemyWallDetector;
+                Physics.Raycast(enemyView, out enemyWallDetector, Mathf.Infinity);
+                while (enemyWallDetector.transform != null && enemyWallDetector.transform.CompareTag("Wall"))
+                {
+                    MeshRenderer lastTransparentWall = enemyWallDetector.transform.gameObject.GetComponent<MeshRenderer>();
+
+                    lastTransparentWall.material = transparentWallMaterial;
+                    lastTransparentWall.transform.gameObject.layer = 2;
+                    lastTransparentWalls.Add(lastTransparentWall);
+
+                    Physics.Raycast(enemyView, out enemyWallDetector, Mathf.Infinity);
+                }
+            }
+        }
+
+        foreach (GameObject doorBall in doorBalls)
+        {
+            if (doorBall != null && doorBall.GetComponent<MeshRenderer>().isVisible)
+            {
+                Ray doorBView = GetComponent<Camera>().ScreenPointToRay(GetComponent<Camera>().WorldToScreenPoint(doorBall.transform.position));
+                RaycastHit doorBWallDetector;
+                Physics.Raycast(doorBView, out doorBWallDetector, Mathf.Infinity);
+                while (doorBWallDetector.transform != null && doorBWallDetector.transform.CompareTag("Wall"))
+                {
+                    MeshRenderer lastTransparentWall = doorBWallDetector.transform.gameObject.GetComponent<MeshRenderer>();
+
+                    lastTransparentWall.material = transparentWallMaterial;
+                    lastTransparentWall.transform.gameObject.layer = 2;
+                    lastTransparentWalls.Add(lastTransparentWall);
+
+                    Physics.Raycast(doorBView, out doorBWallDetector, Mathf.Infinity);
+                }
+            }
         }
     }
 }
