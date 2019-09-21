@@ -92,16 +92,16 @@ public class PlayerBehaviour : MonoBehaviour
 
                 if (swapTarget != null)
                 {
-                    swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(false);
+                    swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(0);
                 }
-                hit.collider.gameObject.GetComponent<EnemyBehaviour>().MakeTarget(true);
+                hit.collider.gameObject.GetComponent<EnemyBehaviour>().MakeTarget(1);
                 swapTarget = hit.collider.gameObject;
             }
             else
             {
                 if(swapTarget != null)
                 {
-                    swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(false);
+                    swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(0);
                 }
                 swapTarget = null;
             }
@@ -109,8 +109,14 @@ public class PlayerBehaviour : MonoBehaviour
         //Deselect if out of range
         if(swapTarget != null && Vector3.Distance(swapTarget.transform.position, transform.position) > swapRange)
         {
-            swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(false);
-            swapTarget = null;
+            swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(2);
+        }
+        else if(swapTarget != null && Vector3.Distance(swapTarget.transform.position, transform.position) <= swapRange)
+        {
+            if(swapTarget.GetComponent<EnemyBehaviour>().isFlashing() == false)
+            {
+                swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(1);
+            }
         }
 
         //Teleporting
