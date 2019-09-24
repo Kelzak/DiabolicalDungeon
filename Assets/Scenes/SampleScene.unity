@@ -4570,7 +4570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &794515696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4585,7 +4585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 2800000, guid: e70cd0ebf40ae8646bde984e417cc69b, type: 3}
   cursorMode: 0
-  hotSpot: {x: 0, y: 0}
+  hotSpot: {x: 64, y: 64}
 --- !u!4 &794515697
 Transform:
   m_ObjectHideFlags: 0
