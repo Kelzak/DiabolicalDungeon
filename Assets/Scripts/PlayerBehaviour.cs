@@ -22,6 +22,7 @@ public class PlayerBehaviour : MonoBehaviour
     private bool canSwap = true;
     private bool targetInRange = false;
     private float currentSwapCooldown;
+    private List<KeyValuePair<GameObject, float>> enemyList = null;
 
     private Rigidbody rb;
     private Camera cam;
@@ -111,7 +112,7 @@ public class PlayerBehaviour : MonoBehaviour
                 targetInRange = false;
             }
         }
-        //Deselect if out of range
+        //Selection Handling
         if(swapTarget != null && Vector3.Distance(swapTarget.transform.position, transform.position) > swapRange)
         {
             swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(2);
@@ -126,6 +127,51 @@ public class PlayerBehaviour : MonoBehaviour
             targetInRange = true;
         }
 
+        //Swap select code
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            List<KeyValuePair<GameObject, float>> tempList = GetEnemiesInRange();
+
+            //If enemyList doesn't exist yet or enemyList is outdated from new list, assign it to the list from most recent check
+            if(enemyList == null || !EnemyListEqual(enemyList, tempList))
+            {
+                enemyList = tempList;
+            }
+            //enemyList is up to date and exists
+            if(enemyList.Count != 0)
+            { 
+                int currIndex = 0;
+                //If current target is already in list continue from there
+                foreach(KeyValuePair<GameObject, float> x in enemyList)
+                {
+                    if (swapTarget == x.Key)
+                    {
+                        currIndex = enemyList.IndexOf(x);
+                    }
+                }
+
+
+                //If there is another entry
+                if (currIndex + 1 < enemyList.Count)
+                {
+                    currIndex++;
+                }
+                //No other entry/end of list
+                else
+                {
+                    currIndex = 0;
+                }
+
+                if (swapTarget != null && swapTarget != enemyList[currIndex].Key)
+                {
+                    swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(0);
+                }
+
+                swapTarget = enemyList[currIndex].Key;
+
+            }
+        }
+
         //Teleporting
         if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)) && canSwap && swapTarget != null && targetInRange)
         {
@@ -133,6 +179,8 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
     }
+
+   
 
     IEnumerator SwapTeleport(Transform target)
     {
@@ -197,6 +245,50 @@ public class PlayerBehaviour : MonoBehaviour
 
     }
 
+    //Cycle Select Functions
+    private List<KeyValuePair<GameObject, float>> GetEnemiesInRange()
+    {
+        EnemyBehaviour[] enemyComponents = FindObjectsOfType<EnemyBehaviour>();
+        List<KeyValuePair<GameObject, float>> eList = new List<KeyValuePair<GameObject, float>>();
+        
+        foreach (EnemyBehaviour x in enemyComponents)
+        {
+            float dist = Vector3.Distance(x.transform.position, transform.position);
+
+            if (x.gameObject.GetComponent<Renderer>().IsVisibleFrom(Camera.main))
+            {
+                eList.Add(new KeyValuePair<GameObject, float>(x.gameObject, dist));
+            }
+        }
+
+        eList.Sort((enemy1, enemy2) => enemy2.Value.CompareTo(enemy1.Value));
+
+        return eList;
+    }
+
+    private bool EnemyListEqual(List<KeyValuePair<GameObject, float>> l1, List<KeyValuePair<GameObject, float>> l2)
+    {
+        //Lists are the same size
+        if(l1.Count != l2.Count)
+        {
+            return false;
+        }
+        
+        //Check individuals
+        for(int i = 0; i < l1.Count; i++)
+        {
+            if(l1[i].Key != l2[i].Key)
+            {
+                return false;
+            }
+        }
+        //Passed all checks
+        return true;
+    }
+
+
+
+    //ON TRIGGER ENTER / ON COLLISION ENTER
     void OnTriggerEnter(Collider other)
     {
       if (other.tag == ("LavaPit"))

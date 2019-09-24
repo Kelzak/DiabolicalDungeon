@@ -77,7 +77,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (currentState == State.Attacking)
+        if (currentState == State.Attacking && tag != "DoorBall")
         {
             var lookPos = new Vector3(player.position.x, this.transform.position.y, player.position.z);
             transform.LookAt(lookPos);
