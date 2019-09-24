@@ -33,6 +33,9 @@ public class PlayerBehaviour : MonoBehaviour
     public AudioClip playerDeath;
     public AudioClip doorOpen;
 
+    private GameObject[] enemies;
+    private GameObject[] doorBalls;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,12 +47,15 @@ public class PlayerBehaviour : MonoBehaviour
         cooldownSlider.maxValue = swapCooldown;
 
         auso = GetComponent<AudioSource>();
+
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        doorBalls = GameObject.FindGameObjectsWithTag("DoorBall");
     }
 
     // Update is called once per frame
     void Update()
     {
-      Respawn();
+        Respawn();
 
         //Movement
         var yValue = Input.GetAxis("Vertical");
@@ -104,7 +110,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
             else
             {
-                if(swapTarget != null)
+                if (swapTarget != null)
                 {
                     swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(0);
                 }
@@ -118,9 +124,9 @@ public class PlayerBehaviour : MonoBehaviour
             swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(2);
             targetInRange = false;
         }
-        else if(swapTarget != null && Vector3.Distance(swapTarget.transform.position, transform.position) <= swapRange)
+        else if (swapTarget != null && Vector3.Distance(swapTarget.transform.position, transform.position) <= swapRange)
         {
-            if(swapTarget.GetComponent<EnemyBehaviour>().isFlashing() == false)
+            if (swapTarget.GetComponent<EnemyBehaviour>().isFlashing() == false)
             {
                 swapTarget.GetComponent<EnemyBehaviour>().MakeTarget(1);
             }
@@ -139,7 +145,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
             //enemyList is up to date and exists
             if(enemyList.Count != 0)
-            { 
+            {
                 int currIndex = 0;
                 //If current target is already in list continue from there
                 foreach(KeyValuePair<GameObject, float> x in enemyList)
@@ -173,14 +179,38 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         //Teleporting
-        if((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)) && canSwap && swapTarget != null && targetInRange)
+        if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)) && canSwap && swapTarget != null && targetInRange)
         {
             StartCoroutine(SwapTeleport(swapTarget.transform));
         }
 
+        //Label objects in range
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null && Vector3.Distance(enemy.transform.position, transform.position) > swapRange)
+            {
+                enemy.GetComponent<EnemyBehaviour>().SetInRange(false);
+            }
+            else if(enemy != null)
+            {
+                enemy.GetComponent<EnemyBehaviour>().SetInRange(true);
+            }
+        }
+
+        foreach (GameObject doorBall in doorBalls)
+        {
+            if (doorBall != null && Vector3.Distance(doorBall.transform.position, transform.position) > swapRange)
+            {
+                doorBall.GetComponent<EnemyBehaviour>().SetInRange(false);
+            }
+            else if(doorBall != null)
+            {
+                doorBall.GetComponent<EnemyBehaviour>().SetInRange(true);
+            }
+        }
     }
 
-   
+
 
     IEnumerator SwapTeleport(Transform target)
     {
@@ -202,7 +232,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             StartCoroutine(SwapTeleportCooldown());
         }
-    }
+}
 
     private bool cooldownActive = false;
     IEnumerator SwapTeleportCooldown()
@@ -250,7 +280,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         EnemyBehaviour[] enemyComponents = FindObjectsOfType<EnemyBehaviour>();
         List<KeyValuePair<GameObject, float>> eList = new List<KeyValuePair<GameObject, float>>();
-        
+
         foreach (EnemyBehaviour x in enemyComponents)
         {
             float dist = Vector3.Distance(x.transform.position, transform.position);
@@ -273,7 +303,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             return false;
         }
-        
+
         //Check individuals
         for(int i = 0; i < l1.Count; i++)
         {

@@ -30,6 +30,8 @@ public class EnemyBehaviour : MonoBehaviour
     private State currentState;
     private Vector3 respawnPos;
 
+    private bool inRange;
+
     private void Start()
     {
         respawnPos = transform.position;
@@ -254,8 +256,11 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if(tag == "DoorBall")
             {
-                transform.position = respawnPos;
-                GetComponent<NavMeshAgent>().enabled = true;
+                if(other.tag == "LavaPit" || other.tag == "Pitfall")
+                {
+                    transform.position = respawnPos;
+                    GetComponent<NavMeshAgent>().enabled = true;
+                }
             }
             else
             {
@@ -266,5 +271,13 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
 
+    public void SetInRange(bool inInRange)
+    {
+        inRange = inInRange;
+    }
 
+    public bool GetInRange()
+    {
+        return inRange;
+    }
 }
