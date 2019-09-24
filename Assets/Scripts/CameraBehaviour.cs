@@ -65,7 +65,7 @@ public class CameraBehaviour : MonoBehaviour
 
         foreach(GameObject enemy in enemies)
         {
-            if (enemy != null && enemy.GetComponent<MeshRenderer>().isVisible)
+            if (enemy != null && enemy.GetComponent<EnemyBehaviour>().GetInRange())
             {
                 Ray enemyView = GetComponent<Camera>().ScreenPointToRay(GetComponent<Camera>().WorldToScreenPoint(enemy.transform.position));
                 RaycastHit enemyWallDetector;
@@ -85,7 +85,7 @@ public class CameraBehaviour : MonoBehaviour
 
         foreach (GameObject doorBall in doorBalls)
         {
-            if (doorBall != null && doorBall.GetComponent<MeshRenderer>().isVisible)
+            if (doorBall != null && doorBall.GetComponent<EnemyBehaviour>().GetInRange())
             {
                 Ray doorBView = GetComponent<Camera>().ScreenPointToRay(GetComponent<Camera>().WorldToScreenPoint(doorBall.transform.position));
                 RaycastHit doorBWallDetector;
