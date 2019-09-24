@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
 {
-    private bool starting = true;
+    private int startTime = 3;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Wall" && !starting)
+        if(collision.gameObject.tag == "Wall" && startTime == 0)
         {
             Destroy(gameObject);
         }
@@ -16,25 +16,33 @@ public class BulletBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Wall" && !starting)
+        if (other.gameObject.tag == "Wall" && startTime == 0)
         {
             Destroy(gameObject);
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Wall" && starting)
+        if(startTime > 0)
         {
-            starting = false;
+            startTime = 3;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Wall" && starting)
+        if (startTime > 0)
         {
-            starting = false;
+            startTime = 3;
+        }
+    }
+
+    private void Update()
+    {
+        if (startTime > 0)
+        {
+            startTime--;
         }
     }
 }
