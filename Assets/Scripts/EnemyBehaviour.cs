@@ -256,8 +256,11 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if(tag == "DoorBall")
             {
-                transform.position = respawnPos;
-                GetComponent<NavMeshAgent>().enabled = true;
+                if(other.tag == "LavaPit" || other.tag == "Pitfall")
+                {
+                    transform.position = respawnPos;
+                    GetComponent<NavMeshAgent>().enabled = true;
+                }
             }
             else
             {
