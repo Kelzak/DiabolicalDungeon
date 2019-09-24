@@ -5724,7 +5724,7 @@ PrefabInstance:
         type: 3}
       propertyPath: requiredEnemies.Array.data[0]
       value: 
-      objectReference: {fileID: 1360617347}
+      objectReference: {fileID: 1787279777}
     - target: {fileID: 472762145128731095, guid: 579e694c3f4bc4773b8d91762eaa4d43,
         type: 3}
       propertyPath: requiredEnemies.Array.data[1]
@@ -7514,12 +7514,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4791063950209690056, guid: c685ae42ef36a3d47ba5dd95a5a47972,
     type: 3}
   m_PrefabInstance: {fileID: 1355699821}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1360617347 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3697213224652340125, guid: 308b3bafe3405624892f1f21422ecea5,
-    type: 3}
-  m_PrefabInstance: {fileID: 402862634}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1373479192
 PrefabInstance:
@@ -10618,6 +10612,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761191049}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1787279777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3697213224652340125, guid: 308b3bafe3405624892f1f21422ecea5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1251908160}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1810699112
 GameObject:
   m_ObjectHideFlags: 0
