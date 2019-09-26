@@ -17,11 +17,11 @@ public class EnemyBehaviour : MonoBehaviour
     public bool canDie = true;
 
     private Behaviour halo;
-    private Color baseEmissionColor;
+    private List<Color> baseEmissionColors;
     private NavMeshAgent agent;
     private NavMeshPath path;
     private LayerMask layerToIgnore;
-    private Material mat;
+    private List<Material> matList;
     private Renderer rend;
 
     private Transform player;
@@ -39,12 +39,29 @@ public class EnemyBehaviour : MonoBehaviour
        
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        mat = GetComponent<Renderer>().material;
-        mat.EnableKeyword("_EMISSION");
+
+        matList = new List<Material>();
+        baseEmissionColors = new List<Color>();
+
+        Renderer targetRenderer;
+        if(transform.name.Contains("barrel"))
+        {
+            targetRenderer = transform.GetChild(0).GetComponent<Renderer>();
+        }
+        else
+        {
+            targetRenderer = GetComponent<Renderer>();
+        }
+
+        foreach(Material x in targetRenderer.materials)
+        {
+            x.EnableKeyword("_EMISSION");
+            matList.Add(x);
+            baseEmissionColors.Add(x.GetColor("_EmissionColor"));
+        }
 
         rend = GetComponent<Renderer>();
 
-        baseEmissionColor = mat.GetColor("_EmissionColor");
 
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -102,7 +119,7 @@ public class EnemyBehaviour : MonoBehaviour
             //Off
             case 0:
                 flash = false;
-                mat.SetColor("_EmissionColor", baseEmissionColor);
+                UpdateEmissionColor();
                 break;
             //Flash
             case 1:
@@ -112,7 +129,7 @@ public class EnemyBehaviour : MonoBehaviour
             //Solid
             case 2:
                 flash = false;
-                mat.SetColor("_EmissionColor", baseEmissionColor * 8);
+                UpdateEmissionColor(8);
                 break;
         }
     }
@@ -227,27 +244,36 @@ public class EnemyBehaviour : MonoBehaviour
         changeSpeed = 10;
 
         float currentIntensity = intensityMin;
-        mat.SetColor("_EmissionColor", baseEmissionColor * currentIntensity);
+        UpdateEmissionColor(currentIntensity);
 
         while (flash)
         {
             while (currentIntensity < intensityMax && flash)
             {
                 currentIntensity += Time.deltaTime * changeSpeed;
-                mat.SetColor("_EmissionColor", baseEmissionColor * currentIntensity);
+                UpdateEmissionColor(currentIntensity);
                 yield return null;
             }
             while (currentIntensity > intensityMin && flash)
             {
                 currentIntensity -= Time.deltaTime * changeSpeed;
-                mat.SetColor("_EmissionColor", baseEmissionColor * currentIntensity);
+                UpdateEmissionColor(currentIntensity);
                 yield return null;
             }
 
             yield return null;
         }
 
-        mat.SetColor("_EmissionColor", baseEmissionColor);
+        UpdateEmissionColor();
+    }
+
+    private void UpdateEmissionColor(float multiplier = 1)
+    {
+        Debug.Log(matList[0].name);
+        for (int i = 0; i < matList.Count; i++)
+        {
+                matList[i].SetColor("_EmissionColor", baseEmissionColors[i] * multiplier);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
