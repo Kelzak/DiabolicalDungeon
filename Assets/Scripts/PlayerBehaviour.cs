@@ -13,6 +13,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float swapCooldown = 5f;
     public float playerLives = 3;
     public Vector3 skipTopuzzle;
+    
 
     public Canvas cooldownCanvas;
     public Slider cooldownSlider;
