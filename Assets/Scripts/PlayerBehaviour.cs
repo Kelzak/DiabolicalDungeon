@@ -13,7 +13,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float swapCooldown = 5f;
     public float playerLives = 3;
     public Vector3 skipTopuzzle;
-    
+    public Image[] Hearts;
 
     public Canvas cooldownCanvas;
     public Slider cooldownSlider;
@@ -56,6 +56,29 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (playerLives == 4)
+        {
+            Hearts[4].GetComponent<Animator>().SetBool("damaged", true);
+        }
+        else if (playerLives == 3)
+        {
+            Hearts[3].GetComponent<Animator>().SetBool("damaged", true);
+        }
+        else if (playerLives == 2)
+        {
+            Hearts[2].GetComponent<Animator>().SetBool("damaged", true);
+        }
+        else if (playerLives == 1)
+        {
+            Hearts[1].GetComponent<Animator>().SetBool("damaged", true);
+        }
+        else if (playerLives == 0)
+        {
+            Hearts[0].GetComponent<Animator>().SetBool("damaged", true);
+        }
+
+
         Respawn();
 
         //Movement
