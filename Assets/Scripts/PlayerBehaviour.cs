@@ -124,6 +124,10 @@ public class PlayerBehaviour : MonoBehaviour
         {
             transform.Translate(moveDirection * moveSpeed * (1 + dashTimer * dashSpeedMultiplier) * Time.deltaTime, Space.World);
         }
+        else
+        {
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+        }
 
         if ((int)(moveDirection.magnitude * 100) != 0)
         {
