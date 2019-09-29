@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7163783799055680092}
   - component: {fileID: 7163783799055680093}
   m_Layer: 9
-  m_Name: barrel (1)
+  m_Name: PinkBarrel
   m_TagString: DoorBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1174087646761638738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -177.14812, y: 279.603, z: -106.9675}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 5656156545045658233}
   m_Father: {fileID: 0}
