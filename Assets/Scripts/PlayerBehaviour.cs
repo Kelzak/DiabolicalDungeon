@@ -90,8 +90,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         Respawn();
 
-        print(respawnController.respawnPosition);
-
         //Movement
         var yValue = Input.GetAxis("Vertical");
         var xValue = Input.GetAxis("Horizontal");
