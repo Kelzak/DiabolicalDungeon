@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material.002
+  m_Name: Material 1
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -74,4 +74,4 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.19607843, g: 0.003921565, b: 0.18306284, a: 1}
-    - _EmissionColor: {r: 0.3773585, g: 0, b: 0.33546555, a: 0}
+    - _EmissionColor: {r: 1, g: 0.70155054, b: 0.0047169924, a: 0}

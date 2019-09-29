@@ -197,7 +197,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         //Swap select code
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.E))
         {
             List<KeyValuePair<GameObject, float>> tempList = GetEnemiesInRange();
 
@@ -221,14 +221,22 @@ public class PlayerBehaviour : MonoBehaviour
 
 
                 //If there is another entry
-                if (currIndex + 1 < enemyList.Count)
+                if (Input.GetKeyDown(KeyCode.Q) && currIndex + 1 < enemyList.Count)
                 {
                     currIndex++;
+                }
+                else if(Input.GetKeyDown(KeyCode.Q) && currIndex + 1 >= enemyList.Count)
+                {
+                    currIndex = 0;
+                }
+                else if(Input.GetKeyDown(KeyCode.E) && currIndex - 1 >= 0)
+                {
+                    currIndex--;
                 }
                 //No other entry/end of list
                 else
                 {
-                    currIndex = 0;
+                    currIndex = enemyList.Count - 1;
                 }
 
                 if (swapTarget != null && swapTarget != enemyList[currIndex].Key)
