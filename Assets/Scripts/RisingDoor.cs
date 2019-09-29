@@ -11,12 +11,14 @@ public class RisingDoor : MonoBehaviour
     private Transform playerPos;
     private Vector3 triggerDirectionVector;
     private Vector3 goalPos;
+    private LayerMask playerLayer;
 
     // Start is called before the first frame update
     void Start()
     {
         goalPos = transform.position;
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        playerLayer = LayerMask.GetMask("Player");
 
         switch (triggerDirection)
         {
@@ -47,5 +49,9 @@ public class RisingDoor : MonoBehaviour
     void Update()
     {
         //BOXCAST
+        if(Physics.BoxCast(goalPos, transform.localScale / 2, triggerDirectionVector, transform.rotation, triggerDistance, playerLayer))
+        {
+            transform.position = goalPos;
+        }
     }
 }
