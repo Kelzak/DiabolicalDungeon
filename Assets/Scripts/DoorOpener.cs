@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DoorOpener : MonoBehaviour
 {
+    public enum _Color { Pink, Yellow };
+    public _Color color = _Color.Pink;
 
   public GameObject doorOpenerCube;
   public bool doorIsThere = true;
@@ -27,7 +29,7 @@ public class DoorOpener : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-      if (other.tag == ("DoorBall"))
+      if (other.tag == ("DoorBall") && (int) other.GetComponent<DoorCubeProperties>().color == (int) color)
         {
             doorIsThere = false;
         }
@@ -35,7 +37,7 @@ public class DoorOpener : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-      if (other.tag == ("DoorBall"))
+      if (other.tag == ("DoorBall") && (int)other.GetComponent<DoorCubeProperties>().color == (int)color)
         {
             doorIsThere = true;
         }
