@@ -15,6 +15,7 @@ TagManager:
   - EnemyBullet
   - DoorBall
   - PlayerWin
+  - RespawnController
   layers:
   - Default
   - TransparentFX
