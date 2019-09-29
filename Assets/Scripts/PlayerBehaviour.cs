@@ -37,6 +37,14 @@ public class PlayerBehaviour : MonoBehaviour
     private GameObject[] enemies;
     private GameObject[] doorBalls;
 
+    public float dashSpeedMultiplier;
+    public int dashTime;
+    public int dashCoolDown;
+
+    private int dashCoolingDown;
+    private int dashTimer;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +68,9 @@ public class PlayerBehaviour : MonoBehaviour
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         doorBalls = GameObject.FindGameObjectsWithTag("DoorBall");
+
+        dashTimer = 0;
+        dashCoolingDown = 0;
     }
 
     // Update is called once per frame
@@ -108,10 +119,29 @@ public class PlayerBehaviour : MonoBehaviour
 
         var moveDirection = forward * yValue + right * xValue;
 
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+        RaycastHit sweepHit;
+        if (!rb.SweepTest(moveDirection, out sweepHit, moveSpeed * (1 + dashTimer * dashSpeedMultiplier) * Time.deltaTime))
+        {
+            transform.Translate(moveDirection * moveSpeed * (1 + dashTimer * dashSpeedMultiplier) * Time.deltaTime, Space.World);
+        }
+
         if ((int)(moveDirection.magnitude * 100) != 0)
         {
             transform.rotation = Quaternion.Euler(0, 360 - (Mathf.Rad2Deg * Mathf.Atan2(moveDirection.z, moveDirection.x)), 0);
+        }
+
+        if(dashTimer > 0)
+        {
+            dashTimer--;
+            if(dashTimer == 0)
+            {
+                dashCoolingDown = dashCoolDown;
+            }
+        }
+
+        if(dashCoolingDown > 0)
+        {
+            dashCoolingDown--;
         }
 
         //Cooldown Canvas Rotation
@@ -239,6 +269,14 @@ public class PlayerBehaviour : MonoBehaviour
             else if(doorBall != null)
             {
                 doorBall.GetComponent<EnemyBehaviour>().SetInRange(true);
+            }
+        }
+
+        if((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && dashTimer == 0 && dashCoolingDown == 0)
+        {
+            if (Mathf.Abs(rb.velocity.y) < 0.01)
+            {
+                dashTimer = dashTime;
             }
         }
     }
