@@ -18,7 +18,7 @@ public class PlayerBehaviour : MonoBehaviour
     public Canvas cooldownCanvas;
     public Slider cooldownSlider;
     public GameObject range;
-    private Vector3 respawnPosition;
+    private RespawnController respawnController;
     private GameObject swapTarget;
     private bool canSwap = true;
     private bool targetInRange = false;
@@ -43,7 +43,16 @@ public class PlayerBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
-        respawnPosition = transform.position;
+
+        respawnController = GameObject.FindGameObjectWithTag("RespawnController").GetComponent<RespawnController>();
+
+        if(!respawnController.positionSet)
+        {
+            respawnController.respawnPosition = transform.position;
+            respawnController.positionSet = true;
+        }
+
+        transform.position = respawnController.respawnPosition;
 
         cooldownSlider.maxValue = swapCooldown;
 
@@ -80,6 +89,8 @@ public class PlayerBehaviour : MonoBehaviour
 
 
         Respawn();
+
+        print(respawnController.respawnPosition);
 
         //Movement
         var yValue = Input.GetAxis("Vertical");
@@ -278,24 +289,25 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Respawn()
     {
-      if(playerLives <= 0)
-      {
-        transform.position = respawnPosition;
-        playerLives = 5;
-        SceneManager.LoadScene(0);
-      }
-
-        if(Input.GetKeyDown(KeyCode.R))
+        if (playerLives <= 0)
         {
-          transform.position = respawnPosition;
-          playerLives = 5;
-          SceneManager.LoadScene(0);
+            playerLives = 5;
+            SceneManager.LoadScene(0);
+            transform.position = respawnController.respawnPosition;
         }
-          if(Input.GetKeyDown(KeyCode.T))
-          {
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            playerLives = 5;
+            SceneManager.LoadScene(0);
+            transform.position = respawnController.respawnPosition;
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
             transform.position = skipTopuzzle;
             playerLives = 5;
-            }
+        }
 
     }
 
@@ -386,12 +398,17 @@ public class PlayerBehaviour : MonoBehaviour
             playerLives = 0;
         }
     }
-    void OnCollisionEnter(Collision Collision)
+    void OnCollisionEnter(Collision collision)
     {
-if(Collision.collider.tag == ("Enemy"))
-{
-  playerLives -= 1;
-  Debug.Log("Player walked into enemy");
-}
+        if(collision.collider.tag == "Enemy")
+        {
+            playerLives -= 1;
+            Debug.Log("Player walked into enemy");
+        }
+
+        if(collision.collider.tag == "Respawn")
+        {
+            respawnController.respawnPosition = new Vector3(collision.transform.position.x, respawnController.respawnPosition.y, collision.transform.position.z);
+        }
     }
 }
