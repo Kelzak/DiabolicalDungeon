@@ -5,11 +5,11 @@ using UnityEngine;
 public class BulletBehaviour : MonoBehaviour
 {
     private int startTime = 3;
-    AudioSource Die;
+    //AudioSource Die;
     void Start()
     {
         //AudioSource[] src = GetComponents<AudioSource>();
-        //Die = src[0];
+        //Die = src[1];
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -18,11 +18,11 @@ public class BulletBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "Enemy" && startTime == 0)
+        /*if (collision.gameObject.tag == "Enemy" && startTime == 0)
         {
             print("Playing Death Sound");
-            //Die.Play();
-        }
+            Die.Play();
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)

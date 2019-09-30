@@ -20,12 +20,14 @@ public class GameController : MonoBehaviour
         if (gameObject.tag == "Enemy")
         {
             Cursor.SetCursor(cursorTextureGreen, hotSpot, cursorMode);
+            Debug.Log("Mouse is over GameObject.");
         }
     }
 
     void OnMouseExit()
     {
         Cursor.SetCursor(null, Vector2.zero, cursorMode);
+        Debug.Log("Mouse is not over GameObject.");
     }
     
 }
