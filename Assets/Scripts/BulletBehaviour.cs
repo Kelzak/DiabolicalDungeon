@@ -8,8 +8,8 @@ public class BulletBehaviour : MonoBehaviour
     AudioSource Die;
     void Start()
     {
-        AudioSource[] src = GetComponents<AudioSource>();
-        Die = src[1];
+        //AudioSource[] src = GetComponents<AudioSource>();
+        //Die = src[0];
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -21,7 +21,7 @@ public class BulletBehaviour : MonoBehaviour
         if (collision.gameObject.tag == "Enemy" && startTime == 0)
         {
             print("Playing Death Sound");
-            Die.Play();
+            //Die.Play();
         }
     }
 
