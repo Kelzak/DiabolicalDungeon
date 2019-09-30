@@ -5,7 +5,10 @@ using UnityEngine;
 public class RisingDoor : MonoBehaviour
 {
     public enum Direction { Front, Behind, Left, Right };
+    public enum Type { PlayerTrigger, DoorOpen  }
     public Direction triggerDirection = Direction.Front;
+    public Type doorType;
+    public GameObject otherDoor;
     public float triggerDistance;
 
     private Transform playerPos;
@@ -17,26 +20,29 @@ public class RisingDoor : MonoBehaviour
     void Start()
     {
         goalPos = transform.position;
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-        playerLayer = LayerMask.GetMask("Player");
-
-        switch (triggerDirection)
+        if (doorType == Type.PlayerTrigger)
         {
-            case Direction.Front:
-                triggerDirectionVector = transform.forward;
-                break;
-            case Direction.Behind:
-                triggerDirectionVector = -transform.forward;
-                break;
-            case Direction.Left:
-                triggerDirectionVector = -transform.right;
-                break;
-            case Direction.Right:
-                triggerDirectionVector = transform.right;
-                break;
-            default:
-                triggerDirectionVector = transform.forward;
-                break;
+            playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+            playerLayer = LayerMask.GetMask("Player");
+
+            switch (triggerDirection)
+            {
+                case Direction.Front:
+                    triggerDirectionVector = transform.forward;
+                    break;
+                case Direction.Behind:
+                    triggerDirectionVector = -transform.forward;
+                    break;
+                case Direction.Left:
+                    triggerDirectionVector = -transform.right;
+                    break;
+                case Direction.Right:
+                    triggerDirectionVector = transform.right;
+                    break;
+                default:
+                    triggerDirectionVector = transform.forward;
+                    break;
+            }
         }
 
         Vector3 startPos = transform.position;
@@ -49,7 +55,12 @@ public class RisingDoor : MonoBehaviour
     void Update()
     {
         //BOXCAST
-        if(Physics.BoxCast(goalPos, transform.localScale / 2, triggerDirectionVector, transform.rotation, triggerDistance, playerLayer))
+        
+        if(doorType == Type.PlayerTrigger && Physics.BoxCast(goalPos, transform.localScale / 2, triggerDirectionVector, transform.rotation, triggerDistance, playerLayer))
+        {
+            transform.position = goalPos;
+        }
+        else if(doorType == Type.DoorOpen && otherDoor.activeSelf == false)
         {
             transform.position = goalPos;
         }
