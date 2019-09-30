@@ -80,22 +80,27 @@ public class PlayerBehaviour : MonoBehaviour
         if (playerLives == 4)
         {
             Hearts[4].GetComponent<Animator>().SetBool("damaged", true);
+            print("Health = 4");
         }
         else if (playerLives == 3)
         {
             Hearts[3].GetComponent<Animator>().SetBool("damaged", true);
+            print("Health = 3");
         }
         else if (playerLives == 2)
         {
             Hearts[2].GetComponent<Animator>().SetBool("damaged", true);
+            print("Health = 2");
         }
         else if (playerLives == 1)
         {
             Hearts[1].GetComponent<Animator>().SetBool("damaged", true);
+            print("Health = 1");
         }
         else if (playerLives == 0)
         {
             Hearts[0].GetComponent<Animator>().SetBool("damaged", true);
+            print("Health = 0");
         }
 
 
