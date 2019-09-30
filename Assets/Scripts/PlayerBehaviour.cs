@@ -310,7 +310,7 @@ public class PlayerBehaviour : MonoBehaviour
         auso.PlayOneShot(teleport, 0.3f);
 
         RaycastHit info;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForEndOfFrame();
         if (!Physics.Linecast(target.position, target.position + (Vector3.down * 5), out info, LayerMask.GetMask("Default"), QueryTriggerInteraction.Collide) || info.collider.tag != "LavaPit")
         {
             
