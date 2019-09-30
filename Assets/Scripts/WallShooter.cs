@@ -12,10 +12,13 @@ public class WallShooter : MonoBehaviour
   float timeCheck;
   public Vector3 bulletDirection;
   bool playerIsInSideWallShotRange = false;
+    AudioSource FireBall;
     // Start is called before the first frame update
     void Start()
     {
         //bulletDirection = (speedX, speedY, speedZ);
+        AudioSource[] src = GetComponents<AudioSource>();
+        FireBall = src[0];
     }
 
     // Update is called once per frame
@@ -36,6 +39,7 @@ public class WallShooter : MonoBehaviour
     {
       if ( playerIsInSideWallShotRange == true && Time.time >= timeCheck)
         {
+         FireBall.Play();
          fire();
          timeCheck = Time.time + shotDelay;
         }
@@ -46,6 +50,7 @@ public class WallShooter : MonoBehaviour
           GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
           newBullet.GetComponent<Rigidbody>().AddRelativeForce(bulletDirection);
           Destroy(newBullet, 4.0f);
+          
       }
       void OnTriggerEnter(Collider other)
       {
