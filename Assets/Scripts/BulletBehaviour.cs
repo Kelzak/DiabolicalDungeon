@@ -4,20 +4,6 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
 {
-    AudioSource arrow;
-    AudioSource Die;
-    void Start()
-    {
-        AudioSource[] src = GetComponents<AudioSource>();
-        arrow = src[0];
-        Die = src[1];
-    }
-
-    void Awake()
-    {
-        arrow.Play();
-    }
-
     private int startTime = 3;
 
     private void OnCollisionEnter(Collision collision)
@@ -25,11 +11,6 @@ public class BulletBehaviour : MonoBehaviour
         if(collision.gameObject.tag == "Wall" && startTime == 0)
         {
             Destroy(gameObject);
-        }
-
-        if (collision.gameObject.tag == "Enemy" && startTime == 0)
-        {
-            Die.Play();
         }
     }
 
