@@ -15,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float moveSpeed = 2.5f;
     public bool canShoot = true;
     public bool canDie = true;
+    public ParticleSystem ps;
 
     private Behaviour halo;
     private List<Color> baseEmissionColors;
@@ -290,6 +291,10 @@ public class EnemyBehaviour : MonoBehaviour
             else
             {
                 StopAllCoroutines();
+                ParticleSystem particle = Instantiate(ps, transform.position, Quaternion.identity);
+                ParticleSystem.MainModule particlemain = particle.main;
+                particlemain.startColor = baseEmissionColors[0];
+                Destroy(particle, 1);
                 Destroy(gameObject);
             }
         }
