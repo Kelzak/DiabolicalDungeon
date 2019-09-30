@@ -44,7 +44,7 @@ public class EnemyBehaviour : MonoBehaviour
         baseEmissionColors = new List<Color>();
 
         Renderer targetRenderer;
-        if(transform.name.Contains("barrel"))
+        if(transform.childCount > 0)
         {
             targetRenderer = transform.GetChild(0).GetComponent<Renderer>();
         }
