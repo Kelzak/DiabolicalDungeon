@@ -121,16 +121,19 @@ public class EnemyBehaviour : MonoBehaviour
             //Off
             case 0:
                 flash = false;
+                if(gameObject.activeSelf)
                 UpdateEmissionColor();
                 break;
             //Flash
             case 1:
                 flash = true;
+                if(gameObject.activeSelf)
                 StartCoroutine(EmissionGlow());
                 break;
             //Solid
             case 2:
                 flash = false;
+                if (gameObject.activeSelf)
                 UpdateEmissionColor(8);
                 break;
         }
