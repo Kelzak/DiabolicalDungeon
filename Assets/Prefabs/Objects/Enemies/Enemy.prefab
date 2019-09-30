@@ -130,6 +130,7 @@ MonoBehaviour:
   moveSpeed: 2.5
   canShoot: 1
   canDie: 1
+  ps: {fileID: 3386420661178068290, guid: c18b70e828656cc4685a01c5f7fe6b03, type: 3}
 --- !u!54 &6426089125548951115
 Rigidbody:
   m_ObjectHideFlags: 0

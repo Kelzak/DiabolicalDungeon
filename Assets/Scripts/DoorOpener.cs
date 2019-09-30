@@ -27,12 +27,14 @@ public class DoorOpener : MonoBehaviour
           doorOpenerCube.SetActive (false);
         }
     }
-    void OnTriggerEnter(Collider other)
+ 
+    void OnCollisionEnter(Collision other)
     {
-      if (other.tag == ("DoorBall") && (int) other.GetComponent<DoorCubeProperties>().color == (int) color)
+      if (other.collider.tag == ("DoorBall") && ((int) other.collider.GetComponent<DoorCubeProperties>().color) == ((int) color))
         {
             doorIsThere = false;
         }
+    
     }
 
     void OnTriggerExit(Collider other)
