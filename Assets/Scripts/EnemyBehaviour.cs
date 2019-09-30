@@ -9,12 +9,13 @@ public class EnemyBehaviour : MonoBehaviour
     public float shootSpeed;
     public float followDistance = 3;
     public float sightRange = 20f;
-    public enum PathingType { Follow, Path}
+    public enum PathingType { Follow, Path ,Static}
     public PathingType pathType;
     public Vector3[] pathMovements;
     public float moveSpeed = 2.5f;
     public bool canShoot = true;
     public bool canDie = true;
+    public ParticleSystem ps;
 
     private Behaviour halo;
     private List<Color> baseEmissionColors;
@@ -31,12 +32,13 @@ public class EnemyBehaviour : MonoBehaviour
     private Vector3 respawnPos;
 
     private bool inRange;
-
+    
     private void Start()
     {
         respawnPos = transform.position;
         halo = (Behaviour)GetComponent("Halo");
-       
+
+        
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -176,7 +178,7 @@ public class EnemyBehaviour : MonoBehaviour
 
             //Movement
             playerPos = player.position;
-            if (pathType == PathingType.Follow)
+            if (pathType == PathingType.Follow && agent.enabled)
             {
                 agent.SetDestination(playerPos + (transform.position - playerPos).normalized * followDistance);
             }
@@ -269,7 +271,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void UpdateEmissionColor(float multiplier = 1)
     {
-        Debug.Log(matList[0].name);
         for (int i = 0; i < matList.Count; i++)
         {
                 matList[i].SetColor("_EmissionColor", baseEmissionColors[i] * multiplier);
@@ -280,7 +281,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(other.tag == "DeathPlane" || other.tag == "LavaPit" || other.tag == "WallShooterBullet" || other.tag == "Pitfall" || other.tag == "EnemyBullet" && canDie == true)
         {
-            if(tag == "DoorBall")
+            
+            if (tag == "DoorBall")
             {
                 if(other.tag == "LavaPit" || other.tag == "Pitfall" || other.tag == "DeathPlane")
                 {
@@ -290,9 +292,16 @@ public class EnemyBehaviour : MonoBehaviour
             }
             else
             {
+                
                 StopAllCoroutines();
-                Destroy(gameObject);
+                ParticleSystem particle = Instantiate(ps, transform.position, Quaternion.identity);
+                ParticleSystem.MainModule particlemain = particle.main;
+                particlemain.startColor = baseEmissionColors[0];
+                Destroy(particle.gameObject, 1);
+                gameObject.SetActive(false);
+                Destroy(gameObject,1.1f);
             }
+            
         }
 
     }
