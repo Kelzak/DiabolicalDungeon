@@ -9,7 +9,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float shootSpeed;
     public float followDistance = 3;
     public float sightRange = 20f;
-    public enum PathingType { Follow, Path}
+    public enum PathingType { Follow, Path ,Static}
     public PathingType pathType;
     public Vector3[] pathMovements;
     public float moveSpeed = 2.5f;
@@ -176,7 +176,7 @@ public class EnemyBehaviour : MonoBehaviour
 
             //Movement
             playerPos = player.position;
-            if (pathType == PathingType.Follow)
+            if (pathType == PathingType.Follow && agent.enabled)
             {
                 agent.SetDestination(playerPos + (transform.position - playerPos).normalized * followDistance);
             }
@@ -269,7 +269,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void UpdateEmissionColor(float multiplier = 1)
     {
-        Debug.Log(matList[0].name);
         for (int i = 0; i < matList.Count; i++)
         {
                 matList[i].SetColor("_EmissionColor", baseEmissionColors[i] * multiplier);
