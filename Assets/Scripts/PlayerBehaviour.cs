@@ -261,7 +261,7 @@ public class PlayerBehaviour : MonoBehaviour
         //Teleporting
         if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)) && canSwap && swapTarget != null && targetInRange)
         {
-            SwapTeleport(swapTarget.transform);
+            StartCoroutine(SwapTeleport(swapTarget.transform));
         }
 
         //Label objects in range
@@ -300,7 +300,7 @@ public class PlayerBehaviour : MonoBehaviour
 
 
 
-    void SwapTeleport(Transform target)
+    IEnumerator SwapTeleport(Transform target)
     {
         target.GetComponent<NavMeshAgent>().enabled = false;
 
@@ -310,8 +310,10 @@ public class PlayerBehaviour : MonoBehaviour
         auso.PlayOneShot(teleport, 0.3f);
 
         RaycastHit info;
+        yield return new WaitForSeconds(0.1f);
         if (!Physics.Linecast(target.position, target.position + (Vector3.down * 5), out info, LayerMask.GetMask("Default"), QueryTriggerInteraction.Collide) || info.collider.tag != "LavaPit")
         {
+            
             target.GetComponent<NavMeshAgent>().enabled = true;
         }
 
