@@ -294,8 +294,9 @@ public class EnemyBehaviour : MonoBehaviour
                 ParticleSystem particle = Instantiate(ps, transform.position, Quaternion.identity);
                 ParticleSystem.MainModule particlemain = particle.main;
                 particlemain.startColor = baseEmissionColors[0];
-                Destroy(particle, 1);
-                Destroy(gameObject);
+                Destroy(particle.gameObject, 1);
+                gameObject.SetActive(false);
+                Destroy(gameObject,1.1f);
             }
         }
 
