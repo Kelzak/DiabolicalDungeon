@@ -278,11 +278,11 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "LavaPit" || other.tag == "WallShooterBullet" || other.tag == "Pitfall" || other.tag == "EnemyBullet" && canDie == true)
+        if(other.tag == "DeathPlane" || other.tag == "LavaPit" || other.tag == "WallShooterBullet" || other.tag == "Pitfall" || other.tag == "EnemyBullet" && canDie == true)
         {
             if(tag == "DoorBall")
             {
-                if(other.tag == "LavaPit" || other.tag == "Pitfall")
+                if(other.tag == "LavaPit" || other.tag == "Pitfall" || other.tag == "DeathPlane")
                 {
                     transform.position = respawnPos;
                     GetComponent<NavMeshAgent>().enabled = true;
