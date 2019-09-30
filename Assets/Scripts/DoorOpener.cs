@@ -28,9 +28,9 @@ public class DoorOpener : MonoBehaviour
         }
     }
  
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
-      if (other.collider.tag == ("DoorBall") && ((int) other.collider.GetComponent<DoorCubeProperties>().color) == ((int) color))
+      if (other.tag == ("DoorBall") && ((int) other.GetComponent<DoorCubeProperties>().color) == ((int) color))
         {
             doorIsThere = false;
         }
