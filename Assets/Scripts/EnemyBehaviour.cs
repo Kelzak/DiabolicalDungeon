@@ -183,7 +183,31 @@ public class EnemyBehaviour : MonoBehaviour
             playerPos = player.position;
             if (pathType == PathingType.Follow && agent.enabled)
             {
-                agent.SetDestination(playerPos + (transform.position - playerPos).normalized * followDistance);
+                Vector3 goalPos = playerPos + (transform.position - playerPos).normalized * followDistance;
+                EnemyBehaviour[] enemies = GameObject.FindObjectsOfType<EnemyBehaviour>();
+                List<GameObject> closestEnemies = new List<GameObject>();
+                foreach(EnemyBehaviour x in enemies)
+                {
+                    if(Vector3.Distance(transform.position, x.transform.position) < followDistance && gameObject != x.gameObject)
+                    {
+                        closestEnemies.Add(x.gameObject);
+                    }
+                    else
+                    {
+                        foreach(GameObject y in closestEnemies)
+                        {
+                            if(y == x.gameObject)
+                            {
+                                closestEnemies.Remove(y);
+                            }
+                        }
+                    }
+                }
+                foreach(GameObject x in closestEnemies)
+                {
+                    goalPos += (x.transform.position - goalPos).normalized * followDistance;
+                }
+                agent.SetDestination(goalPos);
             }
             Physics.Raycast(transform.position, (playerPos - transform.position).normalized, out hit, sightRange, layerToIgnore);
             if (hit.collider != null && hit.collider.tag != "Player")
