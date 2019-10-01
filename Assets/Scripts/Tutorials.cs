@@ -38,7 +38,7 @@ public class Tutorials : MonoBehaviour
             //Tutorial1.gameObject.SetActive(true);
             //Destroy(Tutorial1, 5f);
             isInTutorialRange = true;
-            Invoke("setTutorial1Text", 1);
+            Invoke("setTutorial1Text", .1f);
         }
     }
 
@@ -48,7 +48,7 @@ public class Tutorials : MonoBehaviour
         {
             //Tutorial1.gameObject.SetActive(false);
             isInTutorialRange = false;
-            Invoke("setTutorial1Text", 1);
+            Invoke("setTutorial1Text", .1f);
             //Destroy(Tutorial1, 5f);
         }
     }
