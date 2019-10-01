@@ -421,6 +421,9 @@ public class PlayerBehaviour : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         winText.gameObject.SetActive(false);
+        respawnController.respawnPosition = new Vector3(-2.83f, 0.35f, -0.1f);
+
+        playerLives = 0;
     }
 
     //ON TRIGGER ENTER / ON COLLISION ENTER
@@ -464,7 +467,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (other.tag == ("PlayerWin"))
         {
-            playerLives = 0;
             StartCoroutine(ShowWinText());
         }
     }
