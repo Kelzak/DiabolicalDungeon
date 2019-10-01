@@ -49,7 +49,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -61,12 +61,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133053445920931256}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.7659354
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.6429744, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!23 &8284756829390333108
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -117,8 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052d29e3a0c38904f81d21622bf4844c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  shootSpeed: 0
+  projectile: {fileID: 2845599397631123086, guid: ac397a88c906a4f0bab63b2e170af97b,
+    type: 3}
+  shootSpeed: 5
   followDistance: 3
   sightRange: 20
   pathType: 1
@@ -126,6 +127,7 @@ MonoBehaviour:
   moveSpeed: 0
   canShoot: 0
   canDie: 0
+  ps: {fileID: 0}
 --- !u!195 &8284756829390333110
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -136,8 +138,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 2.5
+  m_Acceleration: 3
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -145,7 +147,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.2
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &8284756829390333111
