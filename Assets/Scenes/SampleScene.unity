@@ -5635,8 +5635,8 @@ MonoBehaviour:
   playerGetsHit: {fileID: 8300000, guid: a8e3f78db429e47b090b9d79d79aaab4, type: 3}
   playerDeath: {fileID: 8300000, guid: 2fc8470a2f43748fe85bcdee0481c96d, type: 3}
   doorOpen: {fileID: 8300000, guid: 330910b8ab7bd41e888f83dd85ca6180, type: 3}
-  dashSpeedMultiplier: 0
-  dashTime: 0
+  dashSpeedMultiplier: 2
+  dashTime: 5
   dashCoolDown: 0
 --- !u!54 &52494323
 Rigidbody:
