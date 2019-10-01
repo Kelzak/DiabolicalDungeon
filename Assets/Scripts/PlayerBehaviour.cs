@@ -14,6 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float playerLives = 3;
     public Vector3 skipTopuzzle;
     public Image[] Hearts;
+    public Text winText;
 
     public Canvas cooldownCanvas;
     public Slider cooldownSlider;
@@ -406,7 +407,14 @@ public class PlayerBehaviour : MonoBehaviour
         return true;
     }
 
+    IEnumerator ShowWinText()
+    {
+        winText.gameObject.SetActive(true);
 
+        yield return new WaitForSeconds(3f);
+
+        winText.gameObject.SetActive(false);
+    }
 
     //ON TRIGGER ENTER / ON COLLISION ENTER
     void OnTriggerEnter(Collider other)
@@ -450,6 +458,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.tag == ("PlayerWin"))
         {
             playerLives = 0;
+            StartCoroutine(ShowWinText());
         }
     }
     void OnCollisionEnter(Collision collision)
