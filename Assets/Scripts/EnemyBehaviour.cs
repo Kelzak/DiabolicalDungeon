@@ -31,12 +31,13 @@ public class EnemyBehaviour : MonoBehaviour
     private Vector3 respawnPos;
 
     private bool inRange;
-
+    
     private void Start()
     {
         respawnPos = transform.position;
         halo = (Behaviour)GetComponent("Halo");
-       
+
+        
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -280,7 +281,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(other.tag == "DeathPlane" || other.tag == "LavaPit" || other.tag == "WallShooterBullet" || other.tag == "Pitfall" || other.tag == "EnemyBullet" && canDie == true)
         {
-            if(tag == "DoorBall")
+            
+            if (tag == "DoorBall")
             {
                 if(other.tag == "LavaPit" || other.tag == "Pitfall" || other.tag == "DeathPlane")
                 {
@@ -290,9 +292,11 @@ public class EnemyBehaviour : MonoBehaviour
             }
             else
             {
+                
                 StopAllCoroutines();
                 Destroy(gameObject);
             }
+            
         }
 
     }
