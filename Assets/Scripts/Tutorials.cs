@@ -47,7 +47,7 @@ public class Tutorials : MonoBehaviour
         if (other.tag == ("Player"))
         {
             //Tutorial1.gameObject.SetActive(false);
-            isInTutorialRange = false
+            isInTutorialRange = false;
             Invoke("setTutorial1Text", 1);
             //Destroy(Tutorial1, 5f);
         }
