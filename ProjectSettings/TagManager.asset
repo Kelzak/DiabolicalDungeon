@@ -16,6 +16,7 @@ TagManager:
   - DoorBall
   - PlayerWin
   - RespawnController
+  - 'Tutorial1 '
   layers:
   - Default
   - TransparentFX
