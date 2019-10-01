@@ -13,6 +13,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float swapCooldown = 5f;
     public float playerLives = 3;
     public Vector3 skipTopuzzle;
+    public Vector3 skipToEnemySection;
     public Image[] Hearts;
     public Text winText;
 
@@ -314,7 +315,7 @@ public class PlayerBehaviour : MonoBehaviour
         yield return new WaitForEndOfFrame();
         if (!Physics.Linecast(target.position, target.position + (Vector3.down * 5), out info, LayerMask.GetMask("Default"), QueryTriggerInteraction.Collide) || info.collider.tag != "LavaPit")
         {
-            
+
             target.GetComponent<NavMeshAgent>().enabled = true;
         }
 
@@ -361,6 +362,12 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             transform.position = skipTopuzzle;
+            playerLives = 5;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            transform.position = skipToEnemySection;
             playerLives = 5;
         }
 
